@@ -50,9 +50,9 @@
     .hk-card { border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid #e8eaed; text-decoration: none; color: #1A1B18; display: flex; flex-direction: column; position: relative; transition: box-shadow .2s, transform .2s; }
     .hk-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.12); transform: translateY(-2px); }
     .hk-card--dark { background: #22231F; color: #fff; border: none; }
-    .hk-card-img { height: 210px; background: #f5f7fa; display: flex; align-items: center; justify-content: center; }
+    .hk-card-img { height: 210px; position: relative; overflow: hidden; background: #f5f7fa; }
     .hk-card--dark .hk-card-img { background: #2d2e2a; }
-    .hk-card-img img { width: 100%; height: 100%; object-fit: contain; padding: 16px; }
+    .hk-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .hk-card-body { padding: 14px 14px 48px; flex: 1; }
     .hk-card-model { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0EBBFF; margin-bottom: 4px; }
     .hk-card-name { font-size: 0.87rem; font-weight: 700; line-height: 1.3; margin-bottom: 5px; }
