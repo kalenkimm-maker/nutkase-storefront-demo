@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutKase | Chromebook Cases — Rugged Clip-On Shell Cases for Education Chromebooks</title>
+  <link rel="stylesheet" href="styles_v2.css">
+  <style>
+    /* ── Chromebook Cases page ── */
+    .cb-hero-wrap { background:#fff; padding:clamp(24px,3vw,40px) clamp(20px,4vw,60px); }
+    .cb-hero {
+      background:#003A3D; color:#fff;
+      padding:clamp(40px,6vw,80px) 0;
+      overflow:hidden; position:relative; border-radius:16px;
+      max-width:1200px; margin:0 auto;
+    }
+    .cb-hero::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 66% 50%, rgba(0,174,181,0.2) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .cb-hero-inner {
+      max-width:1200px; margin:0 auto;
+      padding:0 clamp(20px,4vw,48px);
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:40px; align-items:center; position:relative;
+    }
+    .cb-hero-eyebrow {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.18em;
+      text-transform:uppercase; color:#00AEB5; margin-bottom:14px; display:block;
+    }
+    .cb-hero h1 {
+      font-size:clamp(26px,3vw,48px); font-weight:900;
+      line-height:1.1; margin:0 0 16px; color:#fff;
+    }
+    .cb-hero h1 span { color:#00AEB5; }
+    .cb-hero-sub {
+      font-size:clamp(0.88rem,1.4vw,1rem); color:rgba(255,255,255,0.7);
+      margin:0 0 28px; line-height:1.65; max-width:460px;
+    }
+    .cb-hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px; }
+    .cb-hero-actions a {
+      border-radius:999px; padding:12px 26px; font-weight:700;
+      font-size:0.88rem; text-decoration:none; transition:opacity .2s;
+    }
+    .cb-hero-actions .btn-p { background:#00AEB5; color:#fff; }
+    .cb-hero-actions .btn-p:hover { opacity:.85; text-decoration:none; }
+    .cb-hero-actions .btn-o { border:2px solid rgba(255,255,255,0.35); color:#fff; }
+    .cb-hero-actions .btn-o:hover { border-color:#00AEB5; text-decoration:none; }
+    .cb-feat-row {
+      display:flex; gap:22px; flex-wrap:wrap;
+      padding:20px 0 0; border-top:1px solid rgba(255,255,255,0.1);
+    }
+    .cb-feat-item { display:flex; align-items:center; gap:8px; }
+    .cb-feat-dot { width:7px; height:7px; border-radius:50%; background:#00AEB5; flex-shrink:0; }
+    .cb-feat-text { font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.85); }
+    .cb-hero-visual {
+      border-radius:16px; overflow:hidden;
+      height:clamp(280px,34vw,440px); position:relative;
+    }
+    .cb-hero-visual img {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+    }
+
+    /* ── Sections ── */
+    .cb-section { padding:clamp(40px,5vw,64px) clamp(20px,4vw,60px); }
+    .cb-section-label {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; color:#008A90; text-align:center; margin-bottom:8px;
+    }
+    .cb-section-heading {
+      font-size:clamp(20px,2.6vw,34px); font-weight:800;
+      color:#003A3D; text-align:center; margin-bottom:12px; line-height:1.2;
+    }
+    .cb-section-sub {
+      font-size:0.92rem; color:#5a6778; text-align:center;
+      margin:0 auto 36px; max-width:600px; line-height:1.6;
+    }
+
+    /* ── Brand sections within grid ── */
+    .cb-brand-label {
+      max-width:1200px; margin:0 auto 16px;
+      font-size:0.78rem; font-weight:700; letter-spacing:0.12em;
+      text-transform:uppercase; color:#003A3D; padding:0 2px;
+      border-left:3px solid #00AEB5; padding-left:10px;
+    }
+
+    /* ── Product cards ── */
+    .nk-card-grid-4 {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:16px; max-width:1200px; margin:0 auto 32px;
+    }
+    .nk-card {
+      background:#fff; border:1px solid #e1e5eb;
+      border-radius:16px; overflow:hidden; display:flex;
+      flex-direction:column; transition:box-shadow .2s;
+    }
+    .nk-card:hover { box-shadow:0 8px 24px rgba(0,174,181,0.14); }
+    .nk-card-img {
+      position:relative; overflow:hidden; height:200px; background:#f8f9fa;
+    }
+    .nk-card-img img {
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; display:block;
+    }
+    .nk-card-body { padding:16px; flex:1; display:flex; flex-direction:column; }
+    .nk-card-tag {
+      font-size:0.68rem; font-weight:700; letter-spacing:0.12em;
+      text-transform:uppercase; color:#008A90; margin-bottom:6px;
+    }
+    .nk-card-title { font-size:0.86rem; font-weight:700; color:#1a2535; line-height:1.3; margin-bottom:6px; }
+    .nk-card-sub { font-size:0.78rem; color:#5a6778; line-height:1.45; margin-bottom:14px; flex:1; }
+    .nk-card-buy {
+      display:block; text-align:center;
+      background:#FFD814; border:1px solid #FCD200;
+      border-radius:8px; padding:9px 12px;
+      font-size:0.82rem; font-weight:500; color:#0F1111;
+      cursor:default; user-select:none;
+    }
+
+    /* ── Dark feature banner ── */
+    .cb-feature-banner {
+      background:#003A3D;
+      padding:clamp(40px,5vw,64px) clamp(20px,4vw,60px);
+    }
+    .cb-feature-inner { max-width:1200px; margin:0 auto; }
+    .cb-feature-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:20px; margin-top:32px;
+    }
+    .cb-feat-card {
+      border:1px solid rgba(0,174,181,0.3);
+      border-radius:16px; padding:24px 20px;
+    }
+    .cb-feat-card-dot { width:8px; height:8px; border-radius:50%; background:#00AEB5; margin-bottom:14px; }
+    .cb-feat-card h4 { font-size:0.9rem; font-weight:700; color:#fff; margin-bottom:8px; }
+    .cb-feat-card p { font-size:0.79rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+
+    /* ── CTA ── */
+    .cb-cta {
+      background:#f5f7fa;
+      padding:clamp(48px,5vw,72px) clamp(20px,4vw,60px);
+      text-align:center;
+    }
+    .cb-cta h2 { font-size:clamp(22px,2.8vw,36px); font-weight:800; color:#003A3D; margin-bottom:12px; }
+    .cb-cta p { font-size:0.92rem; color:#4a5568; margin-bottom:28px; }
+    .cb-cta-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+    /* ── Responsive ── */
+    @media(max-width:900px) {
+      .cb-hero-inner { grid-template-columns:1fr; }
+      .cb-hero-visual { display:none; }
+      .nk-card-grid-4 { grid-template-columns:repeat(2,1fr); }
+      .cb-feature-grid { grid-template-columns:repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <!-- Breadcrumb -->
+  <div style="background:#f3f3f3; border-bottom:1px solid #e0e0e0; padding:8px clamp(20px,4vw,60px);">
+    <div style="max-width:1200px; margin:0 auto; font-size:0.78rem; color:#555;">
+      <a href="index.html" style="color:#007185; text-decoration:none;">NutKase Store</a> ›
+      <a href="education.html" style="color:#007185; text-decoration:none;">Education</a> ›
+      <span style="color:#555;">Chromebook Cases</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="cb-hero-wrap">
+    <div class="cb-hero">
+      <div class="cb-hero-inner">
+        <div>
+          <span class="cb-hero-eyebrow">Chromebook Clip-On Cases</span>
+          <h1>Clip-On Protection for<br>Every <span>Chromebook</span></h1>
+          <p class="cb-hero-sub">NutKase rugged shell cases clip on and off in seconds — no tools required. Precision-fit for Dell, HP, Lenovo, and Acer Chromebooks. Custom school logo available on every model.</p>
+          <div class="cb-hero-actions">
+            <a href="#cb-grid" class="btn-p">Shop All Cases</a>
+            <a href="education.html" class="btn-o">All Education Products</a>
+          </div>
+          <div class="cb-feat-row">
+            <div class="cb-feat-item"><div class="cb-feat-dot"></div><span class="cb-feat-text">No-Tool Install</span></div>
+            <div class="cb-feat-item"><div class="cb-feat-dot"></div><span class="cb-feat-text">8 Chromebook Models</span></div>
+            <div class="cb-feat-item"><div class="cb-feat-dot"></div><span class="cb-feat-text">Custom Logo Available</span></div>
+            <div class="cb-feat-item"><div class="cb-feat-dot"></div><span class="cb-feat-text">4-Year Durability</span></div>
+          </div>
+        </div>
+        <div class="cb-hero-visual">
+          <img src="https://www.nutkase.com/cdn/shop/files/hero_banners_test_HC_chromebooks_03.png?v=1774550008&width=840" alt="NutKase Chromebook clip-on cases for schools">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Chromebook Grid -->
+  <div id="cb-grid" class="cb-section">
+    <p class="cb-section-label">All Chromebook Cases</p>
+    <h2 class="cb-section-heading">Rugged Shell Cases by Manufacturer</h2>
+    <p class="cb-section-sub">Every case is precision-fit to a specific Chromebook model — never a generic sleeve. Clip-on design requires no tools and lets IT teams install and remove cases in seconds.</p>
+
+    <p class="cb-brand-label">Dell</p>
+    <div class="nk-card-grid-4">
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/dell_chromebook.png?v=1764781723&width=600" alt="NK Rugged Shell for Dell 3100/3110/3120">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Dell</span>
+          <div class="nk-card-title">NK Rugged Shell Case for Dell 3100/3110/3120 2:1</div>
+          <div class="nk-card-sub">Precision clip-on shell for the most widely deployed Dell Chromebook in K-12. Reinforced corners, no-tool install.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="cb-brand-label">HP</p>
+    <div class="nk-card-grid-4">
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/nk-hp-fortis-g10-rugged-case-front.png?v=1766689044&width=600" alt="NK Rugged Shell for HP Fortis 11 G10">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">HP</span>
+          <div class="nk-card-title">NK Rugged Shell Case for HP Fortis 11&#34; G10 Chromebook</div>
+          <div class="nk-card-sub">Next-gen protection for the HP Fortis G10 — the current flagship HP education Chromebook.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/NutKase-HP-Chromebook-Rugged-Shell-Case.png?v=1763489852&width=600" alt="NK Rugged Shell for HP G8/G9">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">HP</span>
+          <div class="nk-card-title">NK Rugged Shell Case for HP G8/G9 Chromebook</div>
+          <div class="nk-card-sub">Reinforced corners and transparent top shell for HP G8/G9 Chromebook fleets.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="cb-brand-label">Lenovo</p>
+    <div class="nk-card-grid-4">
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/nutkase-rugged-shell-case-lenovo-100e-gen3.png?v=1764599611&width=600" alt="NK Rugged Shell for Lenovo 100E Gen 3">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Lenovo</span>
+          <div class="nk-card-title">NK Rugged Shell Case for Lenovo 100E (3rd Gen)</div>
+          <div class="nk-card-sub">Purpose-built for Lenovo 100E Gen 3 — the most deployed ed-tech Chromebook in K-12.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/NutKase-Lenovo-Laptop-Black-Case.png?v=1763496266&width=600" alt="NK Rugged Shell for Lenovo 100E 4th Gen Intel">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Lenovo</span>
+          <div class="nk-card-title">NK Rugged Shell Case for Lenovo 100E (4th Gen — Intel)</div>
+          <div class="nk-card-sub">Enhanced drop protection for the latest Lenovo 100E Intel deployment cycle.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/NutKase-Lenovo-Tablet-Rugged-Shell-Case.png?v=1763996175&width=600" alt="NK Rugged Shell for Lenovo 300E 4th Gen">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Lenovo</span>
+          <div class="nk-card-title">NK Rugged Shell Case for Lenovo 300E (4th Gen)</div>
+          <div class="nk-card-sub">Rugged 2-in-1 shell for Lenovo 300E tablet configurations in K-12.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="cb-brand-label">Acer</p>
+    <div class="nk-card-grid-4">
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/NutKase-Acer-Spin511-Black-Case-Back.png?v=1763491413&width=600" alt="NK Rugged Shell for Acer Spin 511">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Acer</span>
+          <div class="nk-card-title">NK Rugged Shell Case for Acer Spin 511 (R756T)</div>
+          <div class="nk-card-sub">360-hinge protection for the Acer Spin — prevents torque-related hinge damage.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/NutKase-Acer-511-C736-Black-Case.png?v=1763997308&width=600" alt="NK Rugged Shell for Acer 511 C736">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Acer</span>
+          <div class="nk-card-title">NK Rugged Shell Case for Acer 511 (C736)</div>
+          <div class="nk-card-sub">Front and back clip-on shell for the Acer 511 C736 with precise button cutouts.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Feature Banner -->
+  <div class="cb-feature-banner">
+    <div class="cb-feature-inner">
+      <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,174,181,0.9); text-align:center; margin-bottom:8px;">Why NutKase Chromebook Cases</p>
+      <h2 style="font-size:clamp(20px,2.6vw,34px); font-weight:800; color:#fff; text-align:center; line-height:1.2;">Built for K-12 at Scale</h2>
+      <div class="cb-feature-grid">
+        <div class="cb-feat-card">
+          <div class="cb-feat-card-dot"></div>
+          <h4>Precision-Fit Models</h4>
+          <p>Every case is engineered for a specific Chromebook — not a generic sleeve. Perfect cutouts for ports, cameras, and hinges.</p>
+        </div>
+        <div class="cb-feat-card">
+          <div class="cb-feat-card-dot"></div>
+          <h4>No-Tool Clip-On</h4>
+          <p>Install or remove in seconds with no tools. Ideal for 1:1 device programs, hot-desk rotations, and summer check-in cycles.</p>
+        </div>
+        <div class="cb-feat-card">
+          <div class="cb-feat-card-dot"></div>
+          <h4>4-Year Durability</h4>
+          <p>Middle school districts report cases surviving full 4-year fleet refresh cycles — better TCO than competing brands.</p>
+        </div>
+        <div class="cb-feat-card">
+          <div class="cb-feat-card-dot"></div>
+          <h4>Custom School Logo</h4>
+          <p>Print your school or district logo on every case — reinforces identity and reduces device mix-ups across large deployments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cb-cta">
+    <h2>Protect Your Chromebook Fleet</h2>
+    <p>Explore the full NutKase education lineup — iPad cases, phone pouches, and sleeves.</p>
+    <div class="cb-cta-actions">
+      <a href="education.html" style="background:#00AEB5; color:#fff; border-radius:999px; padding:12px 26px; font-weight:700; font-size:0.9rem; text-decoration:none;">All Education Products</a>
+      <a href="iphone-cases.html" style="border:2px solid #003A3D; color:#003A3D; border-radius:999px; padding:10px 24px; font-weight:700; font-size:0.9rem; text-decoration:none;">iPhone Cases</a>
+      <a href="index.html" style="border:2px solid #003A3D; color:#003A3D; border-radius:999px; padding:10px 24px; font-weight:700; font-size:0.9rem; text-decoration:none;">Back to Store Home</a>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="main.js"></script>
+</body>
+</html>

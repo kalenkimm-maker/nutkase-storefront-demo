@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutKase | Commercial — Branded Device Protection for Business &amp; Field Teams</title>
+  <link rel="stylesheet" href="styles_v2.css">
+  <style>
+    /* ── Commercial page ── */
+    .com-hero-wrap { background:#fff; padding:clamp(24px,3vw,40px) clamp(20px,4vw,60px); }
+    .com-hero {
+      background:#003A3D; color:#fff;
+      padding:clamp(40px,6vw,80px) 0;
+      overflow:hidden; position:relative; border-radius:16px;
+      max-width:1200px; margin:0 auto;
+    }
+    .com-hero::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 65% 50%, rgba(0,174,181,0.18) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .com-hero-inner {
+      max-width:1200px; margin:0 auto;
+      padding:0 clamp(20px,4vw,48px);
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:40px; align-items:center; position:relative;
+    }
+    .com-hero-eyebrow {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.18em;
+      text-transform:uppercase; color:#00AEB5; margin-bottom:14px; display:block;
+    }
+    .com-hero h1 {
+      font-size:clamp(26px,3vw,48px); font-weight:900;
+      line-height:1.1; margin:0 0 16px; color:#fff;
+    }
+    .com-hero h1 span { color:#00AEB5; }
+    .com-hero-sub {
+      font-size:clamp(0.88rem,1.4vw,1rem); color:rgba(255,255,255,0.7);
+      margin:0 0 28px; line-height:1.65; max-width:460px;
+    }
+    .com-hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px; }
+    .com-hero-actions a {
+      border-radius:999px; padding:12px 26px; font-weight:700;
+      font-size:0.88rem; text-decoration:none; transition:opacity .2s;
+    }
+    .com-hero-actions .btn-p { background:#00AEB5; color:#fff; }
+    .com-hero-actions .btn-p:hover { opacity:.85; text-decoration:none; }
+    .com-hero-actions .btn-o { border:2px solid rgba(255,255,255,0.35); color:#fff; }
+    .com-hero-actions .btn-o:hover { border-color:#00AEB5; text-decoration:none; }
+    .com-feat-row {
+      display:flex; gap:22px; flex-wrap:wrap;
+      padding:20px 0 0; border-top:1px solid rgba(255,255,255,0.1);
+    }
+    .com-feat-item { display:flex; align-items:center; gap:8px; }
+    .com-feat-dot { width:7px; height:7px; border-radius:50%; background:#00AEB5; flex-shrink:0; }
+    .com-feat-text { font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.85); }
+    .com-hero-canvas-wrap {
+      height:clamp(280px,34vw,440px); position:relative;
+      border-radius:16px; overflow:hidden; background:#001F22;
+    }
+    .hero-page-canvas { position:absolute; inset:0; width:100%; height:100%; }
+
+    /* ── Sections ── */
+    .com-section { padding:clamp(40px,5vw,64px) clamp(20px,4vw,60px); }
+    .com-section-label {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; color:#008A90; text-align:center; margin-bottom:8px;
+    }
+    .com-section-heading {
+      font-size:clamp(20px,2.6vw,34px); font-weight:800;
+      color:#003A3D; text-align:center; margin-bottom:32px; line-height:1.2;
+    }
+
+    /* ── Splits ── */
+    .com-split-wrap { max-width:1200px; margin:0 auto; }
+    .com-split {
+      display:grid; grid-template-columns:1fr 1fr;
+      border-radius:16px; overflow:hidden; margin-bottom:clamp(16px,2vw,24px);
+    }
+    .com-split-copy {
+      padding:clamp(40px,6vw,64px) clamp(24px,5vw,52px);
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    .com-split-copy.dark { background:#003A3D; color:#fff; }
+    .com-split-copy.light { background:#f5f7fa; color:#1a2535; }
+    .com-split-eye {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; margin-bottom:14px; display:block;
+    }
+    .dark .com-split-eye { color:#00AEB5; }
+    .light .com-split-eye { color:#008A90; }
+    .com-split-copy h3 {
+      font-size:clamp(20px,2.4vw,32px); font-weight:800;
+      line-height:1.15; margin:0 0 14px;
+    }
+    .dark .com-split-copy h3 { color:#fff; }
+    .light .com-split-copy h3 { color:#003A3D; }
+    .com-split-copy p {
+      font-size:0.9rem; line-height:1.65; margin:0 0 24px; max-width:400px;
+    }
+    .dark .com-split-copy p { color:rgba(255,255,255,0.7); }
+    .light .com-split-copy p { color:#4a5568; }
+    .com-pill {
+      display:inline-flex; align-items:center;
+      background:#00AEB5; color:#fff; border-radius:999px;
+      padding:12px 24px; font-weight:700; font-size:0.88rem;
+      text-decoration:none; width:fit-content;
+    }
+    .com-pill:hover { opacity:.85; text-decoration:none; }
+    .com-pill-outline {
+      display:inline-flex; align-items:center;
+      border:2px solid #003A3D; color:#003A3D; border-radius:999px;
+      padding:10px 22px; font-weight:700; font-size:0.88rem;
+      text-decoration:none; width:fit-content;
+    }
+    .com-pill-outline:hover { opacity:.75; text-decoration:none; }
+    .com-split-visual {
+      position:relative; overflow:hidden; min-height:clamp(240px,28vw,380px);
+    }
+    .com-split-visual img {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+    }
+    .com-split--flip .com-split-copy { order:2; }
+    .com-split--flip .com-split-visual { order:1; }
+
+    /* ── Product cards ── */
+    .nk-card-grid-4 {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:16px; max-width:1200px; margin:0 auto;
+    }
+    .nk-card-grid-3 {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:16px; max-width:900px; margin:0 auto;
+    }
+    .nk-card {
+      background:#fff; border:1px solid #e1e5eb;
+      border-radius:16px; overflow:hidden; display:flex;
+      flex-direction:column; transition:box-shadow .2s;
+    }
+    .nk-card:hover { box-shadow:0 8px 24px rgba(0,174,181,0.14); }
+    .nk-card-img {
+      position:relative; overflow:hidden; height:200px; background:#f8f9fa;
+    }
+    .nk-card-img img {
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; display:block;
+    }
+    .nk-card-body { padding:16px; flex:1; display:flex; flex-direction:column; }
+    .nk-card-tag {
+      font-size:0.68rem; font-weight:700; letter-spacing:0.12em;
+      text-transform:uppercase; color:#008A90; margin-bottom:6px;
+    }
+    .nk-card-title { font-size:0.86rem; font-weight:700; color:#1a2535; line-height:1.3; margin-bottom:6px; }
+    .nk-card-sub { font-size:0.78rem; color:#5a6778; line-height:1.45; margin-bottom:14px; flex:1; }
+    .nk-card-buy {
+      display:block; text-align:center;
+      background:#FFD814; border:1px solid #FCD200;
+      border-radius:8px; padding:9px 12px;
+      font-size:0.82rem; font-weight:500; color:#0F1111;
+      cursor:default; user-select:none;
+    }
+
+    /* ── B2B banner ── */
+    .com-b2b-banner {
+      background:#003A3D;
+      padding:clamp(40px,5vw,64px) clamp(20px,4vw,60px);
+    }
+    .com-b2b-inner { max-width:1200px; margin:0 auto; }
+    .com-b2b-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:20px; margin-top:32px;
+    }
+    .com-b2b-card {
+      border:1px solid rgba(0,174,181,0.3);
+      border-radius:16px; padding:24px 20px;
+    }
+    .com-b2b-dot { width:8px; height:8px; border-radius:50%; background:#00AEB5; margin-bottom:14px; }
+    .com-b2b-card h4 { font-size:0.9rem; font-weight:700; color:#fff; margin-bottom:8px; }
+    .com-b2b-card p { font-size:0.79rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+
+    /* ── CTA ── */
+    .com-cta {
+      background:#f5f7fa;
+      padding:clamp(48px,5vw,72px) clamp(20px,4vw,60px);
+      text-align:center;
+    }
+    .com-cta h2 { font-size:clamp(22px,2.8vw,36px); font-weight:800; color:#003A3D; margin-bottom:12px; }
+    .com-cta p { font-size:0.92rem; color:#4a5568; margin-bottom:28px; }
+    .com-cta-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+    /* ── Responsive ── */
+    @media(max-width:900px) {
+      .com-hero-inner { grid-template-columns:1fr; }
+      .com-hero-canvas-wrap { display:none; }
+      .com-split { grid-template-columns:1fr; }
+      .com-split--flip .com-split-copy { order:1; }
+      .com-split--flip .com-split-visual { order:2; }
+      .com-split-visual { min-height:220px; }
+      .nk-card-grid-4 { grid-template-columns:repeat(2,1fr); }
+      .nk-card-grid-3 { grid-template-columns:repeat(2,1fr); }
+      .com-b2b-grid { grid-template-columns:repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <!-- Breadcrumb -->
+  <div style="background:#f3f3f3; border-bottom:1px solid #e0e0e0; padding:8px clamp(20px,4vw,60px);">
+    <div style="max-width:1200px; margin:0 auto; font-size:0.78rem; color:#555;">
+      <a href="index.html" style="color:#007185; text-decoration:none;">NutKase Store</a> ›
+      <span style="color:#555;">Commercial</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="com-hero-wrap">
+    <div class="com-hero">
+      <div class="com-hero-inner">
+        <div>
+          <span class="com-hero-eyebrow">Commercial Solutions</span>
+          <h1>From the Retail Floor<br>to the <span>Field</span></h1>
+          <p class="com-hero-sub">NutKase provides rugged, custom-branded device protection for mobile-first businesses — boosting durability, productivity, and brand visibility across retail teams, field crews, and enterprise deployments.</p>
+          <div class="com-hero-actions">
+            <a href="#iphone-com" class="btn-p">iPhone Cases</a>
+            <a href="#ipad-com" class="btn-o">iPad Cases</a>
+          </div>
+          <div class="com-feat-row">
+            <div class="com-feat-item"><div class="com-feat-dot"></div><span class="com-feat-text">Custom Logo Print</span></div>
+            <div class="com-feat-item"><div class="com-feat-dot"></div><span class="com-feat-text">Exclusively B2B</span></div>
+            <div class="com-feat-item"><div class="com-feat-dot"></div><span class="com-feat-text">Bulk Pricing</span></div>
+            <div class="com-feat-item"><div class="com-feat-dot"></div><span class="com-feat-text">Drop-Proof</span></div>
+          </div>
+        </div>
+        <div class="com-hero-canvas-wrap">
+          <canvas class="hero-page-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Value prop splits -->
+  <div class="com-section">
+    <div class="com-split-wrap">
+
+      <div class="com-split">
+        <div class="com-split-copy dark">
+          <span class="com-split-eye">Retail &amp; Field</span>
+          <h3>Brand Every Device<br>Your Team Carries</h3>
+          <p>Custom-printed cases put your logo on every device in your fleet — improving brand visibility, reducing device mix-ups, and projecting professionalism whether staff are on the floor or in the field.</p>
+          <a href="iphone-cases.html" class="com-pill">Shop iPhone Cases</a>
+        </div>
+        <div class="com-split-visual">
+          <img src="https://www.nutkase.com/cdn/shop/files/rugged_red_logo.png?v=1775815275&width=840" alt="NutKase commercial — branded iPhone case for business">
+        </div>
+      </div>
+
+      <div class="com-split com-split--flip">
+        <div class="com-split-copy light">
+          <span class="com-split-eye">Enterprise</span>
+          <h3>Rugged Protection for<br>High-Turnover Environments</h3>
+          <p>Built to outlast standard cases in demanding commercial environments — warehouses, logistics, field service, and retail. Fewer replacements, lower total cost of ownership.</p>
+          <a href="#sleeves-com" class="com-pill-outline">Work-In Cases &amp; Sleeves</a>
+        </div>
+        <div class="com-split-visual">
+          <img src="https://www.nutkase.com/cdn/shop/files/NutKase-EB121-Keyboard-Case-Front.jpg?v=1753972382&width=840" alt="NutKase rugged keyboard case for enterprise iPad">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- iPhone Cases -->
+  <div id="iphone-com" class="com-section" style="background:#f5f7fa; padding-top:clamp(40px,5vw,64px);">
+    <p class="com-section-label">iPhone</p>
+    <h2 class="com-section-heading">iPhone Cases for Business</h2>
+    <div class="nk-card-grid-4">
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/waterproof_logo.png?v=1775817148&width=600" alt="NK Ultra Waterproof Case for iPhone">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">iPhone</span>
+          <div class="nk-card-title">NK Ultra Waterproof Case for iPhone</div>
+          <div class="nk-card-sub">Fully sealed. Ideal for field service, food industry, and outdoor teams.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/rugged_red_logo.png?v=1775815275&width=600" alt="NK Rugged Case for iPhone">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">iPhone</span>
+          <div class="nk-card-title">NK Rugged Case for iPhone</div>
+          <div class="nk-card-sub">Drop-proof rugged shell. Custom corporate logo available for all colors.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/6_4f37d437-2ad2-4b87-8602-584e149b04e4.png?v=1775815675&width=600" alt="NK Rugged Slide In Clip Case for iPhone">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">iPhone</span>
+          <div class="nk-card-title">NK Rugged Slide-In Clip Case for iPhone</div>
+          <div class="nk-card-sub">Belt-clip ready for retail floor and field service workers who need quick access.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/1_726220e3-63d6-4bd1-8c30-a97ecffb406f.png?v=1773764903&width=600" alt="NK Shield Case for iPhone">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">iPhone</span>
+          <div class="nk-card-title">NK Shield Case for iPhone</div>
+          <div class="nk-card-sub">Enhanced corner protection for high-drop-risk environments.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- iPad Cases -->
+  <div id="ipad-com" class="com-section">
+    <p class="com-section-label">iPad</p>
+    <h2 class="com-section-heading">iPad Cases for Business</h2>
+    <div class="nk-card-grid-4">
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/nk-rugged-ipad-10.9-11-case-back.jpg?v=1766778149&width=600" alt="NK Rugged Case for iPad 10.9/11">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">iPad 10.9&#34;/11&#34;</span>
+          <div class="nk-card-title">NK Rugged Case for iPad 10.9&#34;/11&#34; (10th/11th Gen)</div>
+          <div class="nk-card-sub">Drop-proof with kickstand. Ideal for POS, inventory, and mobile checkout.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/nk-orbita-ipad-10.9-11-case.png?v=1766688077&width=600" alt="NK Orbita for iPad 10.9/11">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">iPad 10.9&#34;/11&#34;</span>
+          <div class="nk-card-title">NK Orbita for iPad 10.9&#34;/11&#34;</div>
+          <div class="nk-card-sub">360-degree rotating stand. Ideal for kiosk and customer-facing display use.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/NutKase-EB121-Keyboard-Case-Front.jpg?v=1753972382&width=600" alt="NK Rugged Keyboard Case for iPad 10.9/11">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">iPad 10.9&#34;/11&#34;</span>
+          <div class="nk-card-title">NK Rugged Keyboard Case for iPad 10.9&#34;/11&#34;</div>
+          <div class="nk-card-sub">Integrated keyboard for enterprise field workers who need fast data entry.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/products/71wwlLZVKXL._SL1000.jpg?v=1576249603&width=600" alt="NK Rugged Case for iPad 10.2">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">iPad 10.2&#34;</span>
+          <div class="nk-card-title">NK Rugged Case for iPad 10.2&#34; (7th/8th/9th Gen)</div>
+          <div class="nk-card-sub">Rugged protection for legacy iPad fleets. Multiple colors for departmental coding.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Work-in Cases & Sleeves -->
+  <div id="sleeves-com" class="com-section" style="background:#f5f7fa;">
+    <p class="com-section-label">Sleeves &amp; Work-In Cases</p>
+    <h2 class="com-section-heading">Laptop Sleeves &amp; Work-In Cases</h2>
+    <div class="nk-card-grid-3">
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/NKVERTICALDROPINSLEEVE11.png?v=1768847663&width=600" alt="NK Vertical Sleeve 11 inch">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Sleeves</span>
+          <div class="nk-card-title">NK Vertical Drop-In Sleeve for 11&#34;</div>
+          <div class="nk-card-sub">Padded vertical sleeve for 11&#34; laptops and tablets. Custom logo available.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/NKVERTICALDROPINSLEEVEjpg_1.png?v=1768847209&width=600" alt="NK Vertical Sleeve 14 inch">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Sleeves</span>
+          <div class="nk-card-title">NK Vertical Drop-In Sleeve for 14&#34;</div>
+          <div class="nk-card-sub">Padded vertical sleeve for 14&#34; business laptops and Chromebooks.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="nk-card">
+        <div class="nk-card-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/nk-rugged-ipad-10.9-11-case-back.jpg?v=1766778149&width=600" alt="NK Rugged Nylon Folio">
+        </div>
+        <div class="nk-card-body">
+          <span class="nk-card-tag">Work-In Cases</span>
+          <div class="nk-card-title">NK Rugged Nylon Folio for 11&#34;</div>
+          <div class="nk-card-sub">Heavy-duty nylon folio with front accessory pocket. B2B bulk pricing.</div>
+          <span class="nk-card-buy">Add to Cart</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- B2B Banner -->
+  <div class="com-b2b-banner">
+    <div class="com-b2b-inner">
+      <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,174,181,0.9); text-align:center; margin-bottom:8px;">Only B2B</p>
+      <h2 style="font-size:clamp(20px,2.6vw,34px); font-weight:800; color:#fff; text-align:center; line-height:1.2;">Purpose-Built for Business Buyers</h2>
+      <div class="com-b2b-grid">
+        <div class="com-b2b-card">
+          <div class="com-b2b-dot"></div>
+          <h4>Exclusively B2B</h4>
+          <p>NutKase sells only to businesses, schools, and organizations — no consumer retail. Every order is backed by B2B-grade service.</p>
+        </div>
+        <div class="com-b2b-card">
+          <div class="com-b2b-dot"></div>
+          <h4>Bulk Order Pricing</h4>
+          <p>Competitive volume pricing for fleet deployments of any size — from 50 units to 50,000. Request a quote for your scale.</p>
+        </div>
+        <div class="com-b2b-card">
+          <div class="com-b2b-dot"></div>
+          <h4>Custom Branding</h4>
+          <p>Full-color corporate logo printed on every case. Reinforce brand identity and reduce device mix-ups across large fleets.</p>
+        </div>
+        <div class="com-b2b-card">
+          <div class="com-b2b-dot"></div>
+          <h4>Fast Turnaround</h4>
+          <p>Full-color rendering within 24 hours of order. Physical samples within two weeks. Fleet delivery on schedule.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="com-cta">
+    <h2>Equip Your Mobile Workforce</h2>
+    <p>Browse the full NutKase lineup for education and healthcare, or view all iPhone and Chromebook cases.</p>
+    <div class="com-cta-actions">
+      <a href="iphone-cases.html" style="background:#00AEB5; color:#fff; border-radius:999px; padding:12px 26px; font-weight:700; font-size:0.9rem; text-decoration:none;">All iPhone Cases</a>
+      <a href="education.html" style="border:2px solid #003A3D; color:#003A3D; border-radius:999px; padding:10px 24px; font-weight:700; font-size:0.9rem; text-decoration:none;">Education</a>
+      <a href="healthcare.html" style="border:2px solid #003A3D; color:#003A3D; border-radius:999px; padding:10px 24px; font-weight:700; font-size:0.9rem; text-decoration:none;">Healthcare</a>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="main.js"></script>
+</body>
+</html>
