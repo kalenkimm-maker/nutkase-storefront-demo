@@ -1,7 +1,7 @@
 /* ============================================================
-   rf IDEAS Amazon Brand Store — Stylesheet
-   Brand: #ED2024 (red), #151537 (deep navy), #4A4986 (purple-navy)
-   Base: Heckler template + rf IDEAS-specific extensions
+   NutKase Amazon Brand Store — Stylesheet
+   Brand: #00AEB5 (teal), #003A3D (deep teal), #151515 (near-black)
+   Base: rf IDEAS template + NutKase-specific extensions
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -9,13 +9,13 @@
 /* 1. CSS Variables
    ============================================================ */
 :root {
-  --primary:      #ED2024;
-  --primary-dark: #C41820;
-  --primary-deep: #151537;
-  --accent:       #ED2024;
-  --orange:       #ED2024;
-  --navy:         #151537;
-  --navy-mid:     #1E1F50;
+  --primary:      #00AEB5;
+  --primary-dark: #008A90;
+  --primary-deep: #003A3D;
+  --accent:       #00AEB5;
+  --orange:       #00AEB5;
+  --navy:         #003A3D;
+  --navy-mid:     #004F53;
   --gray:         #78797C;
   --light-gray:   #f5f7fa;
   --light-bg:     #f5f7fa;
