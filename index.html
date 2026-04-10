@@ -108,6 +108,10 @@
     .cat-tile-block {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      max-width: 1200px;
+      margin: 0 auto clamp(32px, 4vw, 48px);
+      border-radius: 16px;
+      overflow: hidden;
     }
     .cat-tile-block--flip .ct-copy { order: 2; }
     .cat-tile-block--flip .ct-visual { order: 1; }
@@ -174,10 +178,10 @@
 
     /* ── Product row ── */
     .hk-product-strip {
-      background: #fff;
-      padding: 40px clamp(20px, 4vw, 60px);
+      background: transparent;
+      padding: 0;
     }
-    .hk-product-strip--dark { background: #22231F; }
+    .hk-product-strip--dark { background: transparent; }
     .hk-product-grid {
       max-width: 1200px;
       margin: 0 auto;
@@ -421,6 +425,16 @@
     .hk-cta-btns .primary { background: #0EBBFF; color: #1A1B18; }
     .hk-cta-btns .outline { border: 2px solid rgba(255,255,255,0.3); color: #fff; }
     .hk-cta-btns a:hover { opacity: .85; }
+
+    /* ── Category section wrappers — clear visual breaks ── */
+    section#mobile-stands,
+    section#ipad-mounts,
+    section#camera-mounts {
+      padding: clamp(56px, 7vw, 88px) clamp(20px, 4vw, 60px);
+    }
+    section#mobile-stands,
+    section#camera-mounts { background: #fff; }
+    section#ipad-mounts { background: #f5f7fa; }
 
     @media (max-width: 900px) {
       .heckler-hero-inner, .cat-tile-block, .hk-knowledge-row { grid-template-columns: 1fr; }
