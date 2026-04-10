@@ -1,7 +1,7 @@
 /* ============================================================
-   Heckler Amazon Brand Store — Stylesheet
-   Brand: #0EBBFF (cyan), #1A1B18 (near-black), #0099CC (dark cyan)
-   Base: Inseego template + Heckler-specific extensions
+   rf IDEAS Amazon Brand Store — Stylesheet
+   Brand: #ED2024 (red), #151537 (deep navy), #4A4986 (purple-navy)
+   Base: Heckler template + rf IDEAS-specific extensions
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -9,13 +9,13 @@
 /* 1. CSS Variables
    ============================================================ */
 :root {
-  --primary:      #0EBBFF;
-  --primary-dark: #0099CC;
-  --primary-deep: #1A1B18;
-  --accent:       #0EBBFF;
-  --orange:       #0EBBFF;
-  --navy:         #1A1B18;
-  --navy-mid:     #2a2b28;
+  --primary:      #ED2024;
+  --primary-dark: #C41820;
+  --primary-deep: #151537;
+  --accent:       #ED2024;
+  --orange:       #ED2024;
+  --navy:         #151537;
+  --navy-mid:     #1E1F50;
   --gray:         #78797C;
   --light-gray:   #f5f7fa;
   --light-bg:     #f5f7fa;
