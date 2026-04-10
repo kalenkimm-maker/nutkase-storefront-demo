@@ -159,14 +159,22 @@
     .rfi-ind-tile:hover { transform:scale(1.02); }
     .rfi-ind-tile::before {
       content:''; position:absolute; inset:0;
-      background:radial-gradient(ellipse at 50% 30%, rgba(237,32,36,0.2) 0%, transparent 65%);
+      background:radial-gradient(ellipse at 50% 35%, rgba(237,32,36,0.18) 0%, transparent 65%);
     }
-    .rfi-ind-tile-icon { font-size:2.4rem; margin-bottom:12px; position:relative; z-index:1; }
+    .rfi-ind-tile-img {
+      position:absolute; inset:0; width:100%; height:100%;
+      display:flex; align-items:center; justify-content:center;
+      padding:20px 20px 52px;
+    }
+    .rfi-ind-tile-img img {
+      width:100%; height:100%; object-fit:contain;
+      position:relative; z-index:1; filter:drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+    }
     .rfi-ind-tile-label {
       background:rgba(237,32,36,0.9); color:#fff;
       font-size:0.72rem; font-weight:700; letter-spacing:0.05em;
       padding:7px 16px; border-radius:999px; margin-bottom:20px;
-      position:relative; z-index:1; text-align:center;
+      position:relative; z-index:2; text-align:center;
     }
 
     /* Stats */
@@ -434,35 +442,30 @@
   </div>
   <div class="rfi-industry-grid">
     <div class="rfi-ind-tile">
-      <div class="rfi-ind-tile-icon">🏥</div>
       <div class="rfi-ind-tile-label">Healthcare</div>
     </div>
     <div class="rfi-ind-tile">
-      <div class="rfi-ind-tile-icon">🏢</div>
       <div class="rfi-ind-tile-label">Enterprise &amp; Corporate</div>
     </div>
     <div class="rfi-ind-tile">
-      <div class="rfi-ind-tile-icon">🏛️</div>
+      <div class="rfi-ind-tile-img">
+        <img src="https://www.rfideas.com/sites/default/files/styles/content_area/public/2020-01/government_iso.png?itok=VkaGN_Eh" alt="Government">
+      </div>
       <div class="rfi-ind-tile-label">Government</div>
     </div>
     <div class="rfi-ind-tile">
-      <div class="rfi-ind-tile-icon">🏭</div>
       <div class="rfi-ind-tile-label">Manufacturing</div>
     </div>
     <div class="rfi-ind-tile">
-      <div class="rfi-ind-tile-icon">🎓</div>
       <div class="rfi-ind-tile-label">Education</div>
     </div>
     <div class="rfi-ind-tile">
-      <div class="rfi-ind-tile-icon">🏦</div>
       <div class="rfi-ind-tile-label">Financial Services</div>
     </div>
     <div class="rfi-ind-tile">
-      <div class="rfi-ind-tile-icon">🚛</div>
       <div class="rfi-ind-tile-label">Transportation &amp; Logistics</div>
     </div>
     <div class="rfi-ind-tile">
-      <div class="rfi-ind-tile-icon">🎪</div>
       <div class="rfi-ind-tile-label">Events &amp; Hospitality</div>
     </div>
   </div>
