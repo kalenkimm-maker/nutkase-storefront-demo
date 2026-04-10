@@ -265,9 +265,13 @@
     .hk-trusted {
       background: #fff;
       padding: 48px clamp(20px, 4vw, 60px);
-      text-align: center;
       border-top: 1px solid #e8eaed;
       border-bottom: 1px solid #e8eaed;
+    }
+    .hk-trusted-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
     }
     .hk-trusted-label {
       font-size: 0.7rem;
@@ -296,11 +300,15 @@
 
     /* ── Knowledge page teasers (dark 2-col tiles) ── */
     .hk-knowledge-row {
+      background: #f5f7fa;
+      padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 60px);
+    }
+    .hk-knowledge-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
-      background: #f5f7fa;
-      padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 60px);
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .hk-knowledge-tile {
       position: relative;
@@ -719,6 +727,7 @@
 
   <!-- ═══ TRUSTED BY ═══ -->
   <div class="hk-trusted">
+    <div class="hk-trusted-inner">
     <div class="hk-trusted-label">Trusted by the World's Most Innovative Teams</div>
     <div class="hk-trusted-logos">
       <img src="https://heckler.com/cdn/shop/files/amazon_bw.png?v=1660596187&width=360" alt="Amazon">
@@ -729,10 +738,12 @@
       <img src="https://heckler.com/cdn/shop/files/indeed_bw.png?v=1660596209&width=360" alt="Indeed">
       <img src="https://heckler.com/cdn/shop/files/capital_one_bw.png?v=1660596200&width=360" alt="Capital One">
     </div>
+    </div>
   </div>
 
   <!-- ═══ KNOWLEDGE PAGE TEASERS — Lecterns + Walls ═══ -->
   <div class="hk-knowledge-row">
+    <div class="hk-knowledge-grid">
     <div class="hk-knowledge-tile">
       <img src="https://heckler.com/cdn/shop/files/Lectern_Instructor_2x1_PS_sharp_corner_06b49634-c081-497b-b56c-217c15d6e074.jpg?v=1721083478&width=1200"
            alt="Heckler Lectern in lecture hall">
@@ -752,6 +763,7 @@
         <div class="hk-knowledge-desc">Configure impressive video meeting walls for each room — without the added expense of contractors.</div>
         <a href="walls.html" class="hk-knowledge-cta">Configure Yours</a>
       </div>
+    </div>
     </div>
   </div>
 
