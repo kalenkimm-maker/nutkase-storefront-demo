@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rf IDEAS | Dual-Frequency Card Readers — WAVE ID® 125 kHz + 13.56 MHz</title>
+  <link rel="stylesheet" href="styles_v2.css">
+  <style>
+    /* ── Dual-Frequency page ── */
+
+    /* Hero */
+    .df-hero-wrap { background:#fff; padding:clamp(24px,3vw,40px) clamp(20px,4vw,60px); }
+    .df-hero {
+      background:#151537; color:#fff;
+      border-radius:16px; max-width:1200px; margin:0 auto;
+      padding:clamp(56px,8vw,100px) clamp(24px,5vw,72px);
+      position:relative; overflow:hidden; text-align:center;
+    }
+    .df-hero canvas {
+      position:absolute; inset:0; width:100%; height:100%;
+      pointer-events:none;
+    }
+    .df-hero-inner { position:relative; z-index:1; max-width:720px; margin:0 auto; }
+    .df-hero-eyebrow {
+      display:inline-block; font-size:0.72rem; font-weight:700;
+      letter-spacing:0.18em; text-transform:uppercase;
+      color:#ED2024; margin-bottom:18px;
+    }
+    .df-hero h1 {
+      font-size:clamp(28px,4vw,54px); font-weight:900;
+      line-height:1.08; margin:0 0 20px; color:#fff;
+    }
+    .df-hero h1 span { color:#ED2024; }
+    .df-hero-sub {
+      font-size:clamp(0.95rem,1.5vw,1.12rem); color:rgba(255,255,255,0.72);
+      max-width:580px; margin:0 auto 36px; line-height:1.65;
+    }
+    .df-hero-actions { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:48px; }
+    .df-hero-actions .btn-primary {
+      background:#ED2024; color:#fff; border-radius:999px;
+      padding:14px 32px; font-weight:700; font-size:0.92rem;
+      text-decoration:none; transition:opacity .2s;
+    }
+    .df-hero-actions .btn-primary:hover { opacity:.85; text-decoration:none; }
+    .df-hero-actions .btn-outline {
+      border:2px solid rgba(255,255,255,0.35); color:#fff;
+      border-radius:999px; padding:12px 28px; font-weight:600;
+      font-size:0.92rem; text-decoration:none; transition:border-color .2s;
+    }
+    .df-hero-actions .btn-outline:hover { border-color:#ED2024; text-decoration:none; }
+    .df-freq-badges {
+      display:inline-flex; gap:12px; justify-content:center;
+      background:rgba(255,255,255,0.07); border-radius:12px;
+      padding:16px 28px; border:1px solid rgba(255,255,255,0.1);
+    }
+    .df-freq-badge {
+      display:flex; flex-direction:column; align-items:center; gap:4px;
+    }
+    .df-freq-badge-pill {
+      background:#ED2024; color:#fff; border-radius:999px;
+      font-size:0.7rem; font-weight:700; letter-spacing:0.08em;
+      padding:4px 14px;
+    }
+    .df-freq-badge-label {
+      font-size:0.7rem; color:rgba(255,255,255,0.55); font-weight:500;
+    }
+    .df-freq-plus {
+      font-size:1.4rem; font-weight:900; color:rgba(255,255,255,0.3);
+      align-self:center;
+    }
+
+    /* Section wrapper */
+    .df-section { padding:clamp(32px,5vw,64px) clamp(20px,4vw,60px); }
+    .df-section-head { text-align:center; margin-bottom:clamp(28px,4vw,48px); }
+    .df-section-eyebrow {
+      font-size:0.72rem; font-weight:700; letter-spacing:0.18em;
+      text-transform:uppercase; color:#ED2024; margin-bottom:10px;
+    }
+    .df-section-head h2 { font-size:clamp(22px,2.8vw,36px); font-weight:900; color:#151537; margin-bottom:10px; }
+    .df-section-head p { color:#5a6778; max-width:560px; margin:0 auto; font-size:0.95rem; line-height:1.6; }
+
+    /* Breadcrumb */
+    .df-breadcrumb {
+      max-width:1200px; margin:0 auto;
+      padding:10px clamp(20px,4vw,60px); font-size:0.78rem; color:#555;
+    }
+    .df-breadcrumb a { color:#ED2024; text-decoration:none; }
+    .df-breadcrumb a:hover { text-decoration:underline; }
+
+    /* Category splits */
+    .cat-tile-block {
+      display:grid; grid-template-columns:1fr 1fr;
+      max-width:1200px; margin:0 auto clamp(20px,2.5vw,28px);
+      border-radius:16px; overflow:hidden;
+    }
+    .cat-tile-block--flip .ct-copy { order:2; }
+    .cat-tile-block--flip .ct-visual { order:1; }
+    .ct-copy {
+      padding:clamp(40px,6vw,80px) clamp(24px,5vw,64px);
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    .ct-copy--dark { background:#151537; color:#fff; }
+    .ct-copy--light { background:#fff; color:#151537; }
+    .ct-eyebrow {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.18em;
+      text-transform:uppercase; color:#ED2024; margin-bottom:12px;
+    }
+    .ct-copy--light .ct-eyebrow { color:#C41820; }
+    .ct-copy h2 {
+      font-size:clamp(22px,2.8vw,36px); font-weight:900;
+      line-height:1.15; margin:0 0 14px;
+    }
+    .ct-copy p { font-size:0.92rem; line-height:1.65; margin:0 0 28px; opacity:.82; }
+    .ct-checklist { list-style:none; padding:0; margin:0 0 28px; display:flex; flex-direction:column; gap:8px; }
+    .ct-checklist li {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:0.85rem; line-height:1.4;
+    }
+    .ct-checklist li::before {
+      content:''; flex-shrink:0; width:16px; height:16px;
+      background:#ED2024; border-radius:50%; margin-top:1px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:center;
+    }
+    .ct-copy--dark .ct-checklist li { color:rgba(255,255,255,0.82); }
+    .ct-cta {
+      display:inline-flex; align-items:center; gap:8px;
+      background:#ED2024; color:#fff; border-radius:999px;
+      padding:12px 24px; font-size:0.87rem; font-weight:700;
+      text-decoration:none; width:fit-content; transition:opacity .2s;
+    }
+    .ct-cta:hover { opacity:.85; text-decoration:none; }
+    .ct-cta--outline {
+      background:transparent; border:2px solid #ED2024; color:#ED2024;
+    }
+    .ct-copy--dark .ct-cta--outline { border-color:rgba(255,255,255,0.4); color:#fff; }
+    .ct-cta--outline:hover { opacity:.8; }
+    .ct-visual { overflow:hidden; position:relative; min-height:360px; }
+    .ct-visual img {
+      width:100%; height:100%; object-fit:cover;
+      position:absolute; inset:0; display:block;
+    }
+    .ct-visual--pad { background:#edf1f7; display:flex; align-items:center; justify-content:center; }
+    .ct-visual--pad img { position:static; width:auto; height:clamp(200px,28vw,340px); object-fit:contain; }
+
+    /* Product grid */
+    .df-product-grid {
+      max-width:1200px; margin:0 auto;
+      display:grid; gap:20px;
+      grid-template-columns:repeat(4,1fr);
+    }
+    .hk-card {
+      border-radius:16px; overflow:hidden; background:#fff;
+      border:1px solid #e8eaed; text-decoration:none; color:#151537;
+      display:flex; flex-direction:column;
+      transition:box-shadow .2s, transform .2s; position:relative;
+    }
+    .hk-card:hover { box-shadow:0 8px 32px rgba(0,0,0,0.12); transform:translateY(-2px); }
+    .hk-card-img {
+      height:200px; background:#f5f7fa;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .hk-card-img img {
+      width:auto; height:80%; max-width:85%;
+      object-fit:contain; display:block;
+    }
+    .hk-card-body { padding:16px 16px 60px; flex:1; display:flex; flex-direction:column; }
+    .hk-card-model { font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#ED2024; margin-bottom:4px; }
+    .hk-card-name { font-size:0.88rem; font-weight:700; line-height:1.35; margin-bottom:6px; }
+    .hk-card-desc { font-size:0.75rem; color:#666; line-height:1.5; flex:1; }
+    .hk-card-buy {
+      position:absolute; bottom:14px; left:14px;
+      background:#FFD814; color:#0F1111; border:1px solid #FCD200;
+      border-radius:8px; padding:7px 18px; font-size:0.75rem; font-weight:500;
+    }
+
+    /* Why Dual-Frequency dark banner */
+    .df-why-banner {
+      background:#151537; border-radius:16px;
+      max-width:1200px; margin:0 auto;
+      padding:clamp(48px,6vw,80px) clamp(24px,5vw,64px);
+      position:relative; overflow:hidden;
+    }
+    .df-why-banner::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 80% 50%, rgba(237,32,36,0.15) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .df-why-inner { display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,72px); align-items:center; position:relative; }
+    .df-why-copy h2 { font-size:clamp(22px,2.8vw,36px); font-weight:900; color:#fff; margin:0 0 14px; }
+    .df-why-copy p { font-size:0.92rem; color:rgba(255,255,255,0.72); line-height:1.65; margin:0; }
+    .df-why-pills { display:flex; flex-direction:column; gap:14px; }
+    .df-why-pill {
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+      border-radius:12px; padding:16px 20px;
+      display:flex; align-items:flex-start; gap:14px;
+    }
+    .df-why-pill-icon {
+      width:36px; height:36px; flex-shrink:0;
+      background:rgba(237,32,36,0.2); border-radius:8px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .df-why-pill-icon svg { width:18px; height:18px; stroke:#ED2024; fill:none; stroke-width:2; }
+    .df-why-pill-text strong { display:block; font-size:0.85rem; font-weight:700; color:#fff; margin-bottom:3px; }
+    .df-why-pill-text span { font-size:0.78rem; color:rgba(255,255,255,0.6); line-height:1.45; }
+
+    /* Spec comparison table */
+    .df-spec-table {
+      width:100%; border-collapse:collapse; font-size:0.82rem;
+      max-width:1200px; margin:0 auto;
+    }
+    .df-spec-table thead th {
+      background:#151537; color:#fff; font-weight:700;
+      padding:14px 18px; text-align:left; font-size:0.78rem;
+      letter-spacing:0.05em; text-transform:uppercase;
+    }
+    .df-spec-table thead th:first-child { border-radius:12px 0 0 0; }
+    .df-spec-table thead th:last-child { border-radius:0 12px 0 0; }
+    .df-spec-table tbody tr:nth-child(even) td { background:#f9fafb; }
+    .df-spec-table tbody tr:nth-child(odd) td { background:#fff; }
+    .df-spec-table tbody td {
+      padding:12px 18px; border-bottom:1px solid #e8eaed; color:#333;
+      vertical-align:middle;
+    }
+    .df-spec-table tbody td:first-child { font-weight:600; color:#151537; }
+    .df-spec-table tbody tr:last-child td:first-child { border-radius:0 0 0 12px; }
+    .df-spec-table tbody tr:last-child td:last-child { border-radius:0 0 12px 0; }
+    .df-check { color:#ED2024; font-weight:700; font-size:1rem; }
+    .df-dash { color:#bbb; }
+
+    /* CTA Banner */
+    .df-cta-banner {
+      background:#151537; border-radius:16px;
+      max-width:1200px; margin:0 auto;
+      padding:clamp(48px,6vw,80px) clamp(24px,5vw,72px);
+      text-align:center; position:relative; overflow:hidden;
+    }
+    .df-cta-banner::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 50% 0%, rgba(237,32,36,0.22) 0%, transparent 60%);
+    }
+    .df-cta-banner h2 {
+      font-size:clamp(22px,3vw,40px); font-weight:900;
+      color:#fff; margin-bottom:16px; position:relative;
+    }
+    .df-cta-banner p {
+      color:rgba(255,255,255,0.7); font-size:1rem;
+      max-width:540px; margin:0 auto 32px; line-height:1.6; position:relative;
+    }
+    .df-cta-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; }
+    .df-cta-actions a {
+      border-radius:999px; padding:14px 32px; font-weight:700;
+      font-size:0.95rem; text-decoration:none; transition:opacity .2s;
+    }
+    .df-cta-actions a:first-child { background:#ED2024; color:#fff; }
+    .df-cta-actions a:first-child:hover { opacity:.85; }
+    .df-cta-actions a:last-child { border:2px solid rgba(255,255,255,0.4); color:#fff; }
+    .df-cta-actions a:last-child:hover { border-color:#ED2024; }
+
+    @media (max-width:768px) {
+      .df-hero h1 { font-size:clamp(26px,7vw,36px); }
+      .df-freq-badges { flex-direction:column; gap:8px; }
+      .df-freq-plus { display:none; }
+      .cat-tile-block { grid-template-columns:1fr; }
+      .cat-tile-block--flip .ct-copy { order:1; }
+      .cat-tile-block--flip .ct-visual { order:2; }
+      .ct-visual { min-height:220px; }
+      .df-product-grid { grid-template-columns:repeat(2,1fr); }
+      .df-why-inner { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="header-placeholder"></div>
+<script>fetch('partials/header.html').then(r=>r.text()).then(h=>{document.getElementById('header-placeholder').innerHTML=h;});</script>
+
+<!-- BREADCRUMB -->
+<div class="df-breadcrumb">
+  <a href="#">Amazon</a> › <a href="#">Industrial &amp; Scientific</a> › <a href="#">Security &amp; Surveillance</a> › <a href="index.html">rf IDEAS</a> › <span>Dual-Frequency Readers</span>
+</div>
+
+<!-- HERO -->
+<div class="df-section" style="padding-top:0;">
+  <div class="df-hero">
+    <canvas class="hero-page-canvas"></canvas>
+    <div class="df-hero-inner">
+      <div class="df-hero-eyebrow">125 kHz + 13.56 MHz · Dual-Frequency</div>
+      <h1>One Reader.<br><span>Every</span> Credential.</h1>
+      <p class="df-hero-sub">Stop choosing between legacy proximity and modern smart cards. WAVE ID® dual-frequency readers handle both — so your migration can happen on your schedule, not your vendor's.</p>
+      <div class="df-hero-actions">
+        <a href="#products" class="btn-primary">Shop Dual-Frequency Readers</a>
+        <a href="#why" class="btn-outline">Why Dual-Frequency? →</a>
+      </div>
+      <div class="df-freq-badges">
+        <div class="df-freq-badge">
+          <span class="df-freq-badge-pill">125 kHz</span>
+          <span class="df-freq-badge-label">HID Prox · EM4100 · Indala · Awid · Casi-Rusco</span>
+        </div>
+        <div class="df-freq-plus">+</div>
+        <div class="df-freq-badge">
+          <span class="df-freq-badge-pill">13.56 MHz</span>
+          <span class="df-freq-badge-label">MIFARE · DESFire EV3 · iClass · Seos · PIV</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPLIT 1: Phased Migration (dark left) -->
+<div class="df-section" style="padding-top:0;">
+  <div class="cat-tile-block">
+    <div class="ct-copy ct-copy--dark">
+      <div class="ct-eyebrow">No Rip-and-Replace</div>
+      <h2>Migrate on Your Schedule</h2>
+      <p>Most organizations still have a mix of legacy prox credentials and newer smart cards in circulation. A dual-frequency reader lets both work simultaneously — your end users feel nothing while IT controls the transition timeline.</p>
+      <ul class="ct-checklist">
+        <li>Keep existing HID, EM, or Indala prox cards in service</li>
+        <li>Enroll new MIFARE or iClass smart cards alongside them</li>
+        <li>Retire legacy credentials incrementally — no hard cutover</li>
+        <li>Single reader SKU simplifies procurement and helpdesk</li>
+      </ul>
+      <a href="#products" class="ct-cta">See Dual-Frequency Models</a>
+    </div>
+    <div class="ct-visual">
+      <img src="https://i.vimeocdn.com/video/1524162211-cd9aa35a1734286a0a8fe22bc746204bd8ca9a96572addb3e04eae1584026b97-d_960" alt="Phased credential migration — dual-frequency reader supporting both prox and smart cards">
+    </div>
+  </div>
+
+  <!-- SPLIT 2: Enterprise depth (light right) -->
+  <div class="cat-tile-block cat-tile-block--flip">
+    <div class="ct-copy ct-copy--light">
+      <div class="ct-eyebrow">Enterprise · Healthcare · Government</div>
+      <h2>Deep Format Coverage for Complex Environments</h2>
+      <p>WAVE ID® readers are factory-configured to read hundreds of credential formats. Healthcare facilities running MIFARE and government campuses still on Indala get a single device that handles the full credential landscape.</p>
+      <ul class="ct-checklist">
+        <li>Hundreds of 125 kHz and 13.56 MHz formats pre-loaded</li>
+        <li>Seos, PIV, PIV-I, and CAC support for government deployments</li>
+        <li>HIPAA-ready with optional biometric upgrade path (WAVE ID® Bio)</li>
+        <li>Works with virtually every access control middleware platform</li>
+      </ul>
+      <a href="#products" class="ct-cta ct-cta--outline">Explore Products →</a>
+    </div>
+    <div class="ct-visual ct-visual--pad">
+      <img src="https://www.rfideas.com/sites/default/files/styles/content_area/public/2022-10/wave_id_plus_mini.png" alt="WAVE ID Plus Mini — dual-frequency reader for enterprise and government">
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="products" class="df-section" style="background:#f5f7fa;">
+  <div class="df-section-head">
+    <div class="df-section-eyebrow">Dual-Frequency Lineup</div>
+    <h2>WAVE ID® Dual-Frequency Readers</h2>
+    <p>Every model reads both 125 kHz and 13.56 MHz. Choose by form factor, interface, or environment.</p>
+  </div>
+  <div class="df-product-grid">
+
+    <div class="hk-card">
+      <div class="hk-card-img" style="background:#f0f2f5;">
+        <img src="https://www.rfideas.com/sites/default/files/styles/content_area/public/2022-10/wave_id_plus_mini.png" alt="WAVE ID Plus Mini">
+      </div>
+      <div class="hk-card-body">
+        <div class="hk-card-model">Dual-Frequency · USB</div>
+        <div class="hk-card-name">WAVE ID® Plus Mini</div>
+        <div class="hk-card-desc">35% smaller than the original Plus. Modern low-profile design with the same broad format support — ideal for workstation and point-of-care deployments.</div>
+      </div>
+      <span class="hk-card-buy">Add to Cart</span>
+    </div>
+
+    <div class="hk-card">
+      <div class="hk-card-img" style="background:#f0f2f5;">
+        <img src="https://www.rfideas.com/sites/default/files/styles/content_area/public/2022-10/wave_id_sp_plus.png" alt="WAVE ID SP Plus">
+      </div>
+      <div class="hk-card-body">
+        <div class="hk-card-model">Dual-Frequency · USB</div>
+        <div class="hk-card-name">WAVE ID® SP Plus</div>
+        <div class="hk-card-desc">Combines proximity and contactless technologies in one scalable USB reader. Designed for phased credential migrations in enterprise environments.</div>
+      </div>
+      <span class="hk-card-buy">Add to Cart</span>
+    </div>
+
+    <div class="hk-card">
+      <div class="hk-card-img" style="background:#1E1F50; display:flex; align-items:center; justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <rect x="22" y="12" width="36" height="48" rx="6" fill="rgba(237,32,36,0.1)" stroke="#ED2024" stroke-width="1.5"/>
+          <rect x="28" y="18" width="24" height="30" rx="3" fill="rgba(237,32,36,0.07)" stroke="#ED2024" stroke-width="1" opacity=".5"/>
+          <line x1="31" y1="56" x2="49" y2="56" stroke="#ED2024" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+          <path d="M33 34 Q40 27 47 34" stroke="#ED2024" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".7"/>
+          <path d="M36 38 Q40 34 44 38" stroke="#ED2024" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".9"/>
+          <circle cx="40" cy="41" r="2" fill="#ED2024"/>
+          <rect x="32" y="60" width="16" height="8" rx="2" fill="#ED2024" opacity=".2" stroke="#ED2024" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="hk-card-body">
+        <div class="hk-card-model">Dual-Frequency · RS-232 / USB</div>
+        <div class="hk-card-name">WAVE ID® Solo</div>
+        <div class="hk-card-desc">Single-wire serial interface reader designed for kiosk, ATM, and embedded integration. Ships in USB and RS-232 variants for legacy hardware compatibility.</div>
+      </div>
+      <span class="hk-card-buy">Add to Cart</span>
+    </div>
+
+    <div class="hk-card">
+      <div class="hk-card-img" style="background:#1E1F50; display:flex; align-items:center; justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <rect x="14" y="22" width="52" height="36" rx="6" fill="rgba(237,32,36,0.1)" stroke="#ED2024" stroke-width="1.5"/>
+          <rect x="20" y="28" width="28" height="20" rx="2" fill="rgba(237,32,36,0.07)" stroke="#ED2024" stroke-width="1" opacity=".5"/>
+          <circle cx="56" cy="38" r="7" fill="none" stroke="#ED2024" stroke-width="1.5" opacity=".7"/>
+          <path d="M51 38a5 5 0 0 1 10 0" stroke="#ED2024" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <line x1="40" y1="58" x2="40" y2="64" stroke="#ED2024" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+          <line x1="28" y1="64" x2="52" y2="64" stroke="#ED2024" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="hk-card-body">
+        <div class="hk-card-model">Dual-Frequency · USB · Desktop</div>
+        <div class="hk-card-name">WAVE ID® Enroll</div>
+        <div class="hk-card-desc">Enrollment-class reader with LED feedback and extended read range. Purpose-built for credential provisioning workflows and badge office stations.</div>
+      </div>
+      <span class="hk-card-buy">Add to Cart</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHY DUAL-FREQUENCY -->
+<div id="why" class="df-section" style="padding-top:0;">
+  <div class="df-why-banner">
+    <div class="df-why-inner">
+      <div class="df-why-copy">
+        <div class="df-section-eyebrow" style="text-align:left;">The Case for Dual-Frequency</div>
+        <h2 style="color:#fff;">Stop Buying Two Readers</h2>
+        <p>Organizations that split prox and smart card readers across their estate pay twice for hardware, twice for support, and twice for training. Dual-frequency consolidates that — one SKU, one driver, one vendor.</p>
+      </div>
+      <div class="df-why-pills">
+        <div class="df-why-pill">
+          <div class="df-why-pill-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="df-why-pill-text">
+            <strong>Future-Proof Infrastructure</strong>
+            <span>Deploy once. When your organization upgrades from prox to smart cards, the reader stays. Only credentials change.</span>
+          </div>
+        </div>
+        <div class="df-why-pill">
+          <div class="df-why-pill-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="df-why-pill-text">
+            <strong>Reduced Migration Risk</strong>
+            <span>Credential transitions run in parallel — both formats active at once. No big-bang cutover. No user-facing downtime.</span>
+          </div>
+        </div>
+        <div class="df-why-pill">
+          <div class="df-why-pill-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="df-why-pill-text">
+            <strong>Single SKU, Simplified Procurement</strong>
+            <span>One part number covers every desk and door. Bulk purchasing is cleaner and support SLAs are simpler.</span>
+          </div>
+        </div>
+        <div class="df-why-pill">
+          <div class="df-why-pill-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="df-why-pill-text">
+            <strong>Works with Any Middleware</strong>
+            <span>rf IDEAS readers output standard data formats compatible with virtually every physical access control and SSO platform.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPEC TABLE -->
+<div class="df-section" style="padding-top:0;">
+  <div class="df-section-head">
+    <div class="df-section-eyebrow">Model Comparison</div>
+    <h2>Dual-Frequency Reader Specifications</h2>
+    <p>All models read 125 kHz and 13.56 MHz simultaneously. Choose the right form factor for your use case.</p>
+  </div>
+  <div style="max-width:1200px; margin:0 auto; overflow-x:auto; border-radius:12px; border:1px solid #e8eaed;">
+    <table class="df-spec-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Plus Mini</th>
+          <th>SP Plus</th>
+          <th>Solo</th>
+          <th>Enroll</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>125 kHz Prox Support</td>
+          <td><span class="df-check">✓</span></td>
+          <td><span class="df-check">✓</span></td>
+          <td><span class="df-check">✓</span></td>
+          <td><span class="df-check">✓</span></td>
+        </tr>
+        <tr>
+          <td>13.56 MHz Smart Card</td>
+          <td><span class="df-check">✓</span></td>
+          <td><span class="df-check">✓</span></td>
+          <td><span class="df-check">✓</span></td>
+          <td><span class="df-check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Interface</td>
+          <td>USB-A / USB-C</td>
+          <td>USB</td>
+          <td>USB + RS-232</td>
+          <td>USB</td>
+        </tr>
+        <tr>
+          <td>Form Factor</td>
+          <td>Low-profile desktop</td>
+          <td>Standard desktop</td>
+          <td>Embedded / kiosk</td>
+          <td>Desktop — wide</td>
+        </tr>
+        <tr>
+          <td>Extended Read Range</td>
+          <td><span class="df-dash">—</span></td>
+          <td><span class="df-check">✓</span></td>
+          <td><span class="df-dash">—</span></td>
+          <td><span class="df-check">✓</span></td>
+        </tr>
+        <tr>
+          <td>LED / Audio Feedback</td>
+          <td>LED</td>
+          <td>LED + Beeper</td>
+          <td>LED</td>
+          <td>LED + Beeper</td>
+        </tr>
+        <tr>
+          <td>Best For</td>
+          <td>Workstation, point-of-care</td>
+          <td>Enterprise migration</td>
+          <td>Kiosk, ATM, OEM</td>
+          <td>Badge office, enrollment</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="df-section" style="padding-top:0;">
+  <div class="df-cta-banner">
+    <h2>Bridge Legacy and Modern — Without the Disruption</h2>
+    <p>Dual-frequency WAVE ID® readers let your credential transition happen on your timeline. Start with what you have, end where you want to be.</p>
+    <div class="df-cta-actions">
+      <a href="#products">Shop Dual-Frequency Readers</a>
+      <a href="biometric.html">Upgrade to Biometric MFA →</a>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script>fetch('partials/footer.html').then(r=>r.text()).then(h=>{document.getElementById('footer-placeholder').innerHTML=h;});</script>
+<script src="main.js"></script>
+</body>
+</html>
