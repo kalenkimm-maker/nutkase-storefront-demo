@@ -62,11 +62,14 @@
       background:#00AEB5; flex-shrink:0;
     }
     .nk-feat-text { font-size:0.82rem; font-weight:600; color:rgba(255,255,255,0.85); line-height:1.3; }
-    .nk-hero-canvas-wrap {
+    .nk-hero-img-wrap {
       height:clamp(300px,36vw,460px); position:relative;
-      border-radius:16px; overflow:hidden; background:#001F22;
+      border-radius:16px; overflow:hidden;
     }
-    .hero-home-canvas { position:absolute; inset:0; width:100%; height:100%; }
+    .nk-hero-img-wrap img {
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; display:block;
+    }
 
     /* ── Category splits ── */
     .nk-splits-wrap { max-width:1200px; margin:0 auto; padding:0 clamp(20px,4vw,60px) clamp(20px,2.5vw,28px); }
@@ -248,7 +251,7 @@
     /* ── Responsive ── */
     @media(max-width:900px) {
       .nk-hero-inner { grid-template-columns:1fr; }
-      .nk-hero-canvas-wrap { display:none; }
+      .nk-hero-img-wrap { display:none; }
       .nk-split { grid-template-columns:1fr; }
       .nk-split--flip .nk-split-copy { order:1; }
       .nk-split--flip .nk-split-visual { order:2; }
@@ -306,8 +309,8 @@
             </div>
           </div>
         </div>
-        <div class="nk-hero-canvas-wrap">
-          <canvas class="hero-home-canvas"></canvas>
+        <div class="nk-hero-img-wrap">
+          <img src="https://www.nutkase.com/cdn/shop/files/hero_banners_HC_waterproof__001.png?v=1774553020&width=1200" alt="NutKase rugged cases — waterproof iPhone case for healthcare and business">
         </div>
       </div>
     </div>
