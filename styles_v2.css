@@ -807,6 +807,33 @@ p  { margin-bottom: 0; }
 }
 .card-actions .btn { width: 100%; text-align: center; padding: 9px 16px; }
 
+/* Amazon Custom — "Customize now" + metadata */
+.nk-customize-btn {
+  display: block;
+  text-align: center;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+  margin-bottom: 6px;
+  transition: opacity 0.15s;
+}
+.nk-customize-btn:hover { opacity: 0.88; }
+.nk-customize-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.nk-customize-meta strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 /* 11. Tier Labels
    ============================================================ */
 .tier-label {

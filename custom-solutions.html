@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutKase | Custom Solutions — Amazon Custom Logo Printing for Rugged Cases</title>
+  <link rel="stylesheet" href="styles_v2.css">
+  <style>
+    /* ── Custom Solutions page ── */
+    .cs-hero-wrap { background:#fff; padding:clamp(24px,3vw,40px) clamp(20px,4vw,60px); }
+    .cs-hero {
+      background:#003A3D; color:#fff;
+      padding:clamp(40px,6vw,80px) 0;
+      overflow:hidden; position:relative; border-radius:16px;
+      max-width:1200px; margin:0 auto;
+    }
+    .cs-hero::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 68% 50%, rgba(0,174,181,0.22) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .cs-hero-inner {
+      max-width:1200px; margin:0 auto;
+      padding:0 clamp(20px,4vw,48px);
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:48px; align-items:center; position:relative;
+    }
+    .cs-hero-eyebrow {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.18em;
+      text-transform:uppercase; color:#00AEB5; margin-bottom:14px; display:block;
+    }
+    .cs-hero h1 {
+      font-size:clamp(26px,3vw,48px); font-weight:900;
+      line-height:1.1; margin:0 0 16px; color:#fff;
+    }
+    .cs-hero h1 span { color:#00AEB5; }
+    .cs-hero-sub {
+      font-size:clamp(0.88rem,1.4vw,1rem); color:rgba(255,255,255,0.72);
+      margin:0 0 28px; line-height:1.65; max-width:460px;
+    }
+    .cs-hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px; }
+    .cs-hero-actions a {
+      border-radius:999px; padding:12px 26px; font-weight:700;
+      font-size:0.88rem; text-decoration:none; transition:opacity .2s;
+    }
+    .cs-hero-actions .btn-p { background:#00AEB5; color:#fff; }
+    .cs-hero-actions .btn-p:hover { opacity:.85; text-decoration:none; }
+    .cs-hero-actions .btn-o { border:2px solid rgba(255,255,255,0.35); color:#fff; }
+    .cs-hero-actions .btn-o:hover { border-color:#00AEB5; text-decoration:none; }
+    .cs-feat-row {
+      display:flex; gap:22px; flex-wrap:wrap;
+      padding:20px 0 0; border-top:1px solid rgba(255,255,255,0.1);
+    }
+    .cs-feat-item { display:flex; align-items:center; gap:8px; }
+    .cs-feat-dot { width:7px; height:7px; border-radius:50%; background:#00AEB5; flex-shrink:0; }
+    .cs-feat-text { font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.85); }
+    .cs-hero-visual {
+      border-radius:16px; overflow:hidden;
+      height:clamp(280px,34vw,440px); position:relative;
+    }
+    .cs-hero-visual img {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+    }
+
+    /* ── Section layout ── */
+    .cs-section { padding:clamp(40px,5vw,64px) clamp(20px,4vw,60px); }
+    .cs-section-label {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; color:#008A90; text-align:center; margin-bottom:8px;
+    }
+    .cs-section-heading {
+      font-size:clamp(20px,2.6vw,34px); font-weight:800;
+      color:#003A3D; text-align:center; margin-bottom:12px; line-height:1.2;
+    }
+    .cs-section-sub {
+      font-size:0.92rem; color:#5a6778; text-align:center;
+      margin:0 auto 40px; max-width:620px; line-height:1.65;
+    }
+
+    /* ── How It Works — 3-step ── */
+    .cs-steps-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:24px; max-width:1000px; margin:0 auto;
+    }
+    .cs-step-card {
+      border-radius:16px; padding:32px 26px;
+      border:1px solid #e1e5eb; background:#fff;
+      text-align:center; position:relative;
+    }
+    .cs-step-card.dark { background:#003A3D; border-color:#003A3D; }
+    .cs-step-num {
+      width:52px; height:52px; border-radius:50%;
+      background:#e0f6f7; display:flex; align-items:center;
+      justify-content:center; margin:0 auto 16px;
+    }
+    .cs-step-card.dark .cs-step-num { background:rgba(0,174,181,0.22); }
+    .cs-step-label {
+      font-size:0.68rem; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; color:#00AEB5; margin-bottom:10px;
+    }
+    .cs-step-title {
+      font-size:1.05rem; font-weight:700; color:#003A3D; margin-bottom:10px;
+    }
+    .cs-step-card.dark .cs-step-title { color:#fff; }
+    .cs-step-body { font-size:0.84rem; color:#5a6778; line-height:1.6; }
+    .cs-step-card.dark .cs-step-body { color:rgba(255,255,255,0.68); }
+    .cs-step-connector {
+      display:none; /* hidden; layout is visual enough */
+    }
+
+    /* ── What You Can Customize ── */
+    .cs-options-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:20px; max-width:1000px; margin:0 auto;
+    }
+    .cs-option-card {
+      background:#fff; border:1px solid #e1e5eb;
+      border-radius:16px; padding:28px 22px;
+    }
+    .cs-option-icon {
+      width:44px; height:44px; border-radius:8px;
+      background:#e0f6f7; display:flex; align-items:center;
+      justify-content:center; margin-bottom:16px;
+    }
+    .cs-option-title { font-size:0.95rem; font-weight:700; color:#003A3D; margin-bottom:8px; }
+    .cs-option-body { font-size:0.82rem; color:#5a6778; line-height:1.6; }
+
+    /* ── Dark features strip ── */
+    .cs-features-section {
+      background:#003A3D; padding:clamp(40px,5vw,64px) clamp(20px,4vw,60px);
+    }
+    .cs-features-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:24px; max-width:1200px; margin:0 auto;
+    }
+    .cs-feat-card {
+      border:1px solid rgba(0,174,181,0.3);
+      border-radius:16px; padding:24px 20px;
+      text-align:center;
+    }
+    .cs-feat-card-icon {
+      width:44px; height:44px; border-radius:8px;
+      background:rgba(0,174,181,0.2); display:flex;
+      align-items:center; justify-content:center; margin:0 auto 14px;
+    }
+    .cs-feat-card h3 { font-size:0.92rem; font-weight:700; color:#fff; margin-bottom:6px; }
+    .cs-feat-card p { font-size:0.78rem; color:rgba(255,255,255,0.62); line-height:1.5; }
+
+    /* ── Eligible products ── */
+    .cs-eligible-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:20px; max-width:1000px; margin:0 auto;
+    }
+    .cs-eligible-card {
+      background:#fff; border:1px solid #e1e5eb;
+      border-radius:16px; overflow:hidden;
+      display:flex; flex-direction:column;
+    }
+    .cs-eligible-img {
+      position:relative; overflow:hidden; height:200px; background:#f8f9fa;
+    }
+    .cs-eligible-img img {
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; display:block;
+    }
+    .cs-eligible-body { padding:16px; flex:1; display:flex; flex-direction:column; }
+    .cs-eligible-tag {
+      font-size:0.68rem; font-weight:700; letter-spacing:0.12em;
+      text-transform:uppercase; color:#008A90; margin-bottom:6px;
+    }
+    .cs-eligible-title { font-size:0.9rem; font-weight:700; color:#1a2535; margin-bottom:6px; line-height:1.35; }
+    .cs-eligible-meta { font-size:0.78rem; color:#5a6778; margin-bottom:14px; flex:1; line-height:1.5; }
+    .cs-eligible-customize {
+      display:block; text-align:center;
+      background:#00AEB5; color:#fff;
+      border-radius:8px; padding:9px 12px;
+      font-size:0.82rem; font-weight:600;
+      cursor:default; user-select:none; margin-bottom:6px;
+    }
+    .cs-eligible-buy {
+      display:block; text-align:center;
+      background:#FFD814; border:1px solid #FCD200;
+      border-radius:8px; padding:9px 12px;
+      font-size:0.82rem; font-weight:500; color:#0F1111;
+      cursor:default; user-select:none;
+    }
+
+    /* ── FAQ ── */
+    .cs-faq-list { max-width:760px; margin:0 auto; }
+    .cs-faq-item { border-bottom:1px solid #e1e5eb; padding:20px 0; }
+    .cs-faq-q { font-size:0.95rem; font-weight:700; color:#003A3D; margin-bottom:8px; }
+    .cs-faq-a { font-size:0.85rem; color:#5a6778; line-height:1.65; }
+
+    /* ── CTA footer ── */
+    .cs-store-cta {
+      background:#003A3D; text-align:center;
+      padding:clamp(48px,6vw,80px) clamp(20px,4vw,60px);
+    }
+    .cs-store-cta h2 { font-size:clamp(22px,2.8vw,38px); font-weight:800; color:#fff; margin-bottom:14px; }
+    .cs-store-cta p { font-size:0.95rem; color:rgba(255,255,255,0.72); max-width:540px; margin:0 auto 32px; line-height:1.65; }
+    .cs-store-cta-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .cs-pill-cta {
+      display:inline-block; background:#00AEB5; color:#fff;
+      border-radius:999px; padding:13px 28px;
+      font-weight:700; font-size:0.9rem; text-decoration:none;
+      transition:opacity .2s;
+    }
+    .cs-pill-cta:hover { opacity:.85; text-decoration:none; }
+    .cs-pill-cta.outline {
+      background:transparent; border:2px solid rgba(255,255,255,0.45);
+    }
+    .cs-pill-cta.outline:hover { border-color:#00AEB5; }
+
+    /* ── Responsive ── */
+    @media(max-width:860px) {
+      .cs-hero-inner { grid-template-columns:1fr; }
+      .cs-hero-visual { display:none; }
+      .cs-steps-grid { grid-template-columns:1fr; }
+      .cs-options-grid { grid-template-columns:1fr 1fr; }
+      .cs-features-grid { grid-template-columns:1fr 1fr; }
+      .cs-eligible-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:540px) {
+      .cs-options-grid { grid-template-columns:1fr; }
+      .cs-features-grid { grid-template-columns:1fr; }
+      .cs-eligible-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <!-- breadcrumb -->
+  <div style="background:#f5f7fa; padding:10px clamp(20px,4vw,60px); font-size:0.78rem; color:#5a6778;">
+    <a href="index.html" style="color:#007185;">NutKase Store</a>
+    <span style="margin:0 6px;">›</span>
+    <span>Custom Solutions</span>
+  </div>
+
+  <!-- ── Hero ── -->
+  <div class="cs-hero-wrap">
+    <div class="cs-hero">
+      <div class="cs-hero-inner">
+        <div>
+          <span class="cs-hero-eyebrow">Amazon Custom Program</span>
+          <h1>Your Logo on<br><span>Every Case</span></h1>
+          <p class="cs-hero-sub">NutKase participates in the Amazon Custom program — order cases personalized with your organization's logo, colors, and text. Preview your design before you buy, then let NutKase handle the rest.</p>
+          <div class="cs-hero-actions">
+            <a href="iphone-cases.html" class="btn-p">Browse Customizable Cases</a>
+            <a href="education.html" class="btn-o">Education Products</a>
+          </div>
+          <div class="cs-feat-row">
+            <div class="cs-feat-item"><div class="cs-feat-dot"></div><span class="cs-feat-text">No Minimums</span></div>
+            <div class="cs-feat-item"><div class="cs-feat-dot"></div><span class="cs-feat-text">Live Preview on Amazon</span></div>
+            <div class="cs-feat-item"><div class="cs-feat-dot"></div><span class="cs-feat-text">Fulfilled by NutKase</span></div>
+            <div class="cs-feat-item"><div class="cs-feat-dot"></div><span class="cs-feat-text">Bulk Order Pricing</span></div>
+          </div>
+        </div>
+        <div class="cs-hero-visual">
+          <img src="https://www.nutkase.com/cdn/shop/files/hero_banners_test_edu_pouch.png?v=1774551866&width=840" alt="NutKase custom branded cases with school logo">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── How It Works ── -->
+  <div class="cs-section">
+    <p class="cs-section-label">Amazon Custom</p>
+    <h2 class="cs-section-heading">How Custom Ordering Works</h2>
+    <p class="cs-section-sub">Amazon Custom lets you personalize NutKase products directly on Amazon — no separate quoting process, no waiting for a sales call.</p>
+    <div class="cs-steps-grid">
+
+      <div class="cs-step-card">
+        <div class="cs-step-num">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <div class="cs-step-label">Step 1</div>
+        <div class="cs-step-title">Select a Case &amp; Upload</div>
+        <div class="cs-step-body">Find any NutKase listing with the "Customize now" button. Upload your logo file (PNG, JPG, or SVG), choose placement, and select a case color.</div>
+      </div>
+
+      <div class="cs-step-card dark">
+        <div class="cs-step-num">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+        </div>
+        <div class="cs-step-label">Step 2</div>
+        <div class="cs-step-title">Preview Your Design</div>
+        <div class="cs-step-body">Amazon's live customization preview shows exactly how your logo looks on the case before you place the order. Adjust size and position until it looks right.</div>
+      </div>
+
+      <div class="cs-step-card">
+        <div class="cs-step-num">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <div class="cs-step-label">Step 3</div>
+        <div class="cs-step-title">Order &amp; Ship</div>
+        <div class="cs-step-body">Add to cart and check out on Amazon as usual. NutKase prints and ships your custom cases directly. Bulk orders receive volume pricing automatically.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── What You Can Customize ── -->
+  <div class="cs-section" style="background:#f5f7fa;">
+    <p class="cs-section-label">Customization Options</p>
+    <h2 class="cs-section-heading">What You Can Personalize</h2>
+    <p class="cs-section-sub">Amazon Custom supports three types of product personalization. NutKase offers all three across its case lineup.</p>
+    <div class="cs-options-grid">
+
+      <div class="cs-option-card">
+        <div class="cs-option-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <div class="cs-option-title">Logo Upload</div>
+        <div class="cs-option-body">Upload your organization's logo in any standard format. NutKase prints it in full color on the case surface. Placement is configurable — front, back, or spine.</div>
+      </div>
+
+      <div class="cs-option-card">
+        <div class="cs-option-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="cs-option-title">Case Color Selection</div>
+        <div class="cs-option-body">Choose from NutKase's standard color palette to match your brand identity. Select the case body color independently from the printed logo color.</div>
+      </div>
+
+      <div class="cs-option-card">
+        <div class="cs-option-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+        </div>
+        <div class="cs-option-title">Text &amp; Labeling</div>
+        <div class="cs-option-body">Add a department name, asset number, or custom text to each case. Useful for device management in schools, hospitals, and large fleet deployments.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Why Amazon Custom ── -->
+  <div class="cs-features-section">
+    <div style="max-width:1200px; margin:0 auto;">
+      <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#00AEB5; text-align:center; margin-bottom:8px;">Why It Works</p>
+      <h2 style="font-size:clamp(20px,2.6vw,34px); font-weight:800; color:#fff; text-align:center; margin-bottom:36px; line-height:1.2;">Built for B2B at Any Scale</h2>
+      <div class="cs-features-grid">
+        <div class="cs-feat-card">
+          <div class="cs-feat-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>No Minimums</h3>
+          <p>Order one case or one thousand. Amazon Custom removes the traditional bulk-order requirement — pay per unit, no setup fees.</p>
+        </div>
+        <div class="cs-feat-card">
+          <div class="cs-feat-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Live Preview</h3>
+          <p>See exactly what the finished product looks like before placing the order. No guesswork, no production samples needed.</p>
+        </div>
+        <div class="cs-feat-card">
+          <div class="cs-feat-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Direct Fulfillment</h3>
+          <p>NutKase prints and ships directly — no third-party print house, no quality compromise. Every case meets NutKase's production standards.</p>
+        </div>
+        <div class="cs-feat-card">
+          <div class="cs-feat-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00AEB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Bulk Pricing</h3>
+          <p>Volume discounts apply automatically at checkout. Higher order quantities trigger lower per-unit pricing — no negotiation required.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Eligible Products ── -->
+  <div class="cs-section">
+    <p class="cs-section-label">Popular Choices</p>
+    <h2 class="cs-section-heading">Cases Available for Customization</h2>
+    <p class="cs-section-sub">All NutKase cases on Amazon are eligible for custom logo printing. These are the most commonly ordered for branded fleets.</p>
+    <div class="cs-eligible-grid">
+
+      <div class="cs-eligible-card">
+        <div class="cs-eligible-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/nk-rugged-ipad-10.9-11-case-back.jpg?v=1766778149&width=600" alt="NK Rugged Case for iPad 10.9/11">
+        </div>
+        <div class="cs-eligible-body">
+          <span class="cs-eligible-tag">iPad</span>
+          <div class="cs-eligible-title">NK Rugged Case for iPad 10.9&#34;/11&#34;</div>
+          <div class="cs-eligible-meta"><strong>Customizations:</strong> Logo upload, color<br>Drop-proof shell with kickstand. Most popular for education and healthcare fleets.</div>
+          <span class="cs-eligible-customize">Customize now</span>
+          <span class="cs-eligible-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="cs-eligible-card">
+        <div class="cs-eligible-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/waterproof_logo.png?v=1766687888&width=600" alt="NK Ultra Waterproof Case for iPhone">
+        </div>
+        <div class="cs-eligible-body">
+          <span class="cs-eligible-tag">iPhone</span>
+          <div class="cs-eligible-title">NK Ultra Waterproof Case for iPhone</div>
+          <div class="cs-eligible-meta"><strong>Customizations:</strong> Logo upload, color<br>IPAC Approved. Fully sealed waterproof shell for healthcare and clinical environments.</div>
+          <span class="cs-eligible-customize">Customize now</span>
+          <span class="cs-eligible-buy">Add to Cart</span>
+        </div>
+      </div>
+
+      <div class="cs-eligible-card">
+        <div class="cs-eligible-img">
+          <img src="https://www.nutkase.com/cdn/shop/files/nk-student-cellphone-pouch.png?v=1766688837&width=600" alt="NK Student Cell Phone Pouch">
+        </div>
+        <div class="cs-eligible-body">
+          <span class="cs-eligible-tag">Education</span>
+          <div class="cs-eligible-title">NK Student Cell Phone Pouch</div>
+          <div class="cs-eligible-meta"><strong>Customizations:</strong> Logo embossing, color<br>School logo embossing on the front panel. Ideal for school-branded device policies.</div>
+          <span class="cs-eligible-customize">Customize now</span>
+          <span class="cs-eligible-buy">Add to Cart</span>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center; margin-top:36px;">
+      <a href="iphone-cases.html" class="cs-pill-cta" style="margin-right:12px;">All iPhone Cases</a>
+      <a href="education.html" class="cs-pill-cta">All Education Products</a>
+    </div>
+  </div>
+
+  <!-- ── FAQ ── -->
+  <div class="cs-section" style="background:#f5f7fa;">
+    <p class="cs-section-label">Questions</p>
+    <h2 class="cs-section-heading">Common Questions</h2>
+    <div class="cs-faq-list">
+
+      <div class="cs-faq-item">
+        <div class="cs-faq-q">What file formats are accepted for logo upload?</div>
+        <div class="cs-faq-a">Amazon Custom accepts PNG, JPG, and SVG files. For best print quality, NutKase recommends a vector SVG or high-resolution PNG at 300 DPI or higher. Logos with transparent backgrounds produce the cleanest results.</div>
+      </div>
+
+      <div class="cs-faq-item">
+        <div class="cs-faq-q">Is there a minimum order quantity?</div>
+        <div class="cs-faq-a">No. Amazon Custom removes the traditional MOQ requirement — you can order a single custom case or hundreds. Bulk pricing tiers apply automatically at higher quantities.</div>
+      </div>
+
+      <div class="cs-faq-item">
+        <div class="cs-faq-q">How long does fulfillment take?</div>
+        <div class="cs-faq-a">Custom orders are fulfilled directly by NutKase. Production typically takes 3–5 business days, with shipping time on top. Estimated delivery is shown at checkout before you confirm the order.</div>
+      </div>
+
+      <div class="cs-faq-item">
+        <div class="cs-faq-q">Can I order different logos on different cases in the same order?</div>
+        <div class="cs-faq-a">Each unit in an order can be configured individually. You can mix cases with different logos, colors, or text within a single Amazon order — useful for multi-department deployments.</div>
+      </div>
+
+      <div class="cs-faq-item">
+        <div class="cs-faq-q">Are returns accepted on custom orders?</div>
+        <div class="cs-faq-a">Personalized products are generally non-returnable unless there is a defect or production error. NutKase will replace any case where the print quality does not match the approved preview.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Store CTA ── -->
+  <div class="cs-store-cta">
+    <h2>Ready to Brand Your Fleet?</h2>
+    <p>Browse customizable NutKase cases on Amazon and start your custom order today — no sales rep required.</p>
+    <div class="cs-store-cta-actions">
+      <a href="iphone-cases.html" class="cs-pill-cta">iPhone Cases</a>
+      <a href="education.html" class="cs-pill-cta outline">Education Products</a>
+      <a href="healthcare.html" class="cs-pill-cta outline">Healthcare Products</a>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="main.js"></script>
+</body>
+</html>
