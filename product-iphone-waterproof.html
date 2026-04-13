@@ -6,14 +6,14 @@
   <title>NK Rugged Case for iPhone — Custom Logo | NutKase | Amazon Brand Store</title>
   <link rel="stylesheet" href="styles_v2.css">
   <style>
-    /* ── Product page layout ── */
+    /* ── Product page layout — 3 columns: image | config | buybox ── */
     .pdp-wrap {
-      max-width: 1200px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 24px clamp(16px,3vw,40px) 60px;
+      padding: 24px clamp(16px,2vw,32px) 60px;
       display: grid;
-      grid-template-columns: 460px 1fr;
-      gap: 48px;
+      grid-template-columns: 380px 1fr 280px;
+      gap: 24px;
       align-items: start;
     }
 
@@ -229,12 +229,15 @@
       font-family: inherit; transition: background .15s;
     }
     .pdp-buynow-btn:hover { background: #fa8900; }
-    /* Buy box wrapper — Amazon-style bordered box */
+    /* Buy box — 3rd column, sticky */
+    .pdp-buybox-col {
+      position: sticky;
+      top: 116px;
+    }
     .pdp-buybox {
       border: 1px solid #d5d9d9;
       border-radius: 8px;
       padding: 18px;
-      margin-top: 16px;
     }
     /* Customization required note */
     .pdp-custom-required {
@@ -542,8 +545,13 @@
         </div>
       </div>
 
-      <!-- ── Amazon-style Buy Box ── -->
+    </div><!-- /pdp-info -->
+
+    <!-- COL 3: Sticky buy box -->
+    <div class="pdp-buybox-col">
       <div class="pdp-buybox">
+        <div class="pdp-price-label">Price:</div>
+        <div class="pdp-price-main" style="margin-bottom:8px;"><sup>$</sup>39<sup>99</sup></div>
         <div class="pdp-prime" style="margin-bottom:4px;">
           <span class="pdp-prime-badge">prime</span>
           FREE delivery <strong style="color:#0F1111;">Wednesday, April 16</strong>
@@ -577,9 +585,9 @@
           <div class="pdp-seller-row"><dt>Payment</dt><dd>Secure transaction</dd></div>
         </dl>
       </div>
+    </div><!-- /pdp-buybox-col -->
 
-    </div>
-  </div>
+  </div><!-- /pdp-wrap -->
 
   <!-- ── Lower sections ── -->
   <div class="pdp-lower">
