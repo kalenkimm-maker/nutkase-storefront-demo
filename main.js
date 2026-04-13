@@ -23,6 +23,7 @@ async function loadPartials() {
   initMobileNav();
   initActiveNav();
   initSmoothScroll();
+  initNavDropdowns();
 }
 
 /* ============================================================
@@ -50,6 +51,26 @@ function initActiveNav() {
     if (href === currentPage || (currentPage === '' && href === 'index.html')) {
       link.classList.add('active');
     }
+  });
+}
+
+/* ============================================================
+   Nav Dropdowns
+   ============================================================ */
+function initNavDropdowns() {
+  document.querySelectorAll('.brand-subnav-dropdown').forEach(function(dropdown) {
+    var trigger = dropdown.querySelector('.brand-subnav-dropdown-trigger');
+    var menu = dropdown.querySelector('.brand-subnav-dropdown-menu');
+    if (!trigger || !menu) return;
+    dropdown.addEventListener('mouseenter', function() {
+      var rect = trigger.getBoundingClientRect();
+      menu.style.top = rect.bottom + 'px';
+      menu.style.left = Math.min(rect.left, window.innerWidth - 230) + 'px';
+      dropdown.classList.add('open');
+    });
+    dropdown.addEventListener('mouseleave', function() {
+      dropdown.classList.remove('open');
+    });
   });
 }
 

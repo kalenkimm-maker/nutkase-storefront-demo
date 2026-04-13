@@ -62,23 +62,6 @@
   </nav>
 
   <!-- ═══ BRAND SUB-NAV ═══ -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.brand-subnav-dropdown').forEach(function(dropdown) {
-        var trigger = dropdown.querySelector('.brand-subnav-dropdown-trigger');
-        var menu = dropdown.querySelector('.brand-subnav-dropdown-menu');
-        function openMenu() {
-          var rect = trigger.getBoundingClientRect();
-          menu.style.top = rect.bottom + 'px';
-          menu.style.left = rect.left + 'px';
-          dropdown.classList.add('open');
-        }
-        function closeMenu() { dropdown.classList.remove('open'); }
-        dropdown.addEventListener('mouseenter', openMenu);
-        dropdown.addEventListener('mouseleave', closeMenu);
-      });
-    });
-  </script>
   <div class="brand-subnav">
     <div class="brand-subnav-inner">
       <a href="index.html" class="brand-subnav-logo">
