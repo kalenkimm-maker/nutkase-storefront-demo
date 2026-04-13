@@ -229,18 +229,76 @@
       font-family: inherit; transition: background .15s;
     }
     .pdp-buynow-btn:hover { background: #fa8900; }
-    .pdp-sold-by { font-size: 0.78rem; color: #565959; margin-top: 8px; line-height: 1.7; }
-    .pdp-sold-by a { color: #007185; text-decoration: none; }
-    .pdp-sold-by a:hover { text-decoration: underline; }
+    /* Buy box wrapper — Amazon-style bordered box */
+    .pdp-buybox {
+      border: 1px solid #d5d9d9;
+      border-radius: 8px;
+      padding: 18px;
+      margin-top: 16px;
+    }
+    /* Customization required note */
+    .pdp-custom-required {
+      font-size: 0.82rem;
+      color: #0F1111;
+      margin-bottom: 14px;
+    }
+    /* Terms line under Customize now */
+    .pdp-custom-terms {
+      font-size: 0.72rem;
+      color: #565959;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+    .pdp-custom-terms a { color: #007185; text-decoration: none; }
+    .pdp-custom-terms a:hover { text-decoration: underline; }
+    /* Seller/Returns/Payment compact grid */
+    .pdp-seller-grid { margin-top: 14px; border-top: 1px solid #e1e5eb; padding-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .pdp-seller-row { display: flex; gap: 8px; font-size: 0.78rem; color: #0F1111; }
+    .pdp-seller-row dt { font-weight: 700; min-width: 80px; flex-shrink: 0; color: #565959; }
+    .pdp-seller-row dd { color: #0F1111; }
+    .pdp-seller-row dd a { color: #007185; text-decoration: none; }
+    .pdp-seller-row dd a:hover { text-decoration: underline; }
+    .pdp-add-to-list {
+      display: block; text-align: center;
+      background: #fff; color: #0F1111;
+      border: 1px solid #d5d9d9; border-radius: 999px;
+      padding: 9px 16px; font-size: 0.82rem; font-weight: 500;
+      cursor: pointer; width: 100%; font-family: inherit; margin-top: 10px;
+      transition: background .15s, border-color .15s;
+    }
+    .pdp-add-to-list:hover { background: #f0f2f2; border-color: #888; }
+    /* Customizations metadata line */
+    .pdp-customizations-meta {
+      font-size: 0.82rem; color: #0F1111; margin-top: 10px;
+      padding-top: 10px; border-top: 1px solid #e1e5eb;
+    }
 
     /* ── Lower sections ── */
     .pdp-lower { max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px,3vw,40px) 60px; }
     .pdp-section-divider { border: none; border-top: 1px solid #e1e5eb; margin: 36px 0; }
     .pdp-section-title { font-size: 1.15rem; font-weight: 700; color: #0F1111; margin-bottom: 16px; }
 
-    /* About list */
-    .pdp-about-list { list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; }
-    .pdp-about-list li { font-size: 0.88rem; color: #0F1111; line-height: 1.55; }
+    /* Top highlights grid */
+    .pdp-highlights {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 12px; max-width: 700px; margin-bottom: 24px;
+    }
+    .pdp-highlight-item {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .pdp-highlight-label { font-size: 0.72rem; color: #565959; }
+    .pdp-highlight-value { font-size: 0.82rem; color: #0F1111; font-weight: 600; }
+
+    /* About list — Amazon ★ style */
+    .pdp-about-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .pdp-about-list li {
+      font-size: 0.88rem; color: #0F1111; line-height: 1.55;
+      padding-left: 22px; position: relative;
+    }
+    .pdp-about-list li::before {
+      content: '★'; position: absolute; left: 0;
+      color: #f59e0b; font-size: 0.78rem; top: 2px;
+    }
 
     /* Color options grid */
     .pdp-color-showcase {
@@ -252,8 +310,9 @@
     /* Specs table */
     .pdp-specs-table { width: 100%; max-width: 700px; border-collapse: collapse; font-size: 0.85rem; }
     .pdp-specs-table tr:nth-child(odd) { background: #f5f7fa; }
-    .pdp-specs-table td { padding: 10px 16px; vertical-align: top; border: 1px solid #e1e5eb; color: #0F1111; line-height: 1.45; }
-    .pdp-specs-table td:first-child { font-weight: 700; width: 220px; white-space: nowrap; }
+    .pdp-specs-table tr:nth-child(even) { background: #fff; }
+    .pdp-specs-table td { padding: 10px 16px; vertical-align: top; border: none; border-bottom: 1px solid #e8e8e8; color: #0F1111; line-height: 1.45; }
+    .pdp-specs-table td:first-child { font-weight: 700; width: 220px; white-space: nowrap; color: #565959; }
 
     /* How customization works */
     .pdp-custom-how {
@@ -427,6 +486,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#007185" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           Custom colors available for orders of 500+ units
         </div>
+        <div class="pdp-customizations-meta"><strong>Customizations:</strong> 1 logo image, 1 text input</div>
       </div>
 
       <!-- Amazon Custom Panel -->
@@ -482,24 +542,40 @@
         </div>
       </div>
 
-      <!-- Qty + CTAs -->
-      <div class="pdp-qty-row">
-        <span class="pdp-qty-label">Quantity:</span>
-        <select class="pdp-qty-select">
-          <option>1</option><option>5</option><option>10</option>
-          <option>25</option><option>50</option><option>100</option><option>500</option>
-        </select>
-      </div>
-      <div class="pdp-actions">
-        <button class="pdp-customize-cta" onclick="handleCustomizeNow()">Customize now</button>
-        <button class="pdp-atc-btn">Add to Cart</button>
-        <button class="pdp-buynow-btn">Buy now</button>
-      </div>
+      <!-- ── Amazon-style Buy Box ── -->
+      <div class="pdp-buybox">
+        <div class="pdp-prime" style="margin-bottom:4px;">
+          <span class="pdp-prime-badge">prime</span>
+          FREE delivery <strong style="color:#0F1111;">Wednesday, April 16</strong>
+        </div>
+        <div style="font-size:0.8rem; color:#0F1111; display:flex; align-items:center; gap:5px; margin-bottom:10px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#007185" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span style="color:#007185;">Delivering to your location</span> &nbsp;<a href="#" style="color:#007185; font-size:0.78rem;">Update</a>
+        </div>
+        <div class="pdp-stock" style="margin-bottom:10px;">In Stock</div>
+        <div style="font-size:0.8rem; color:#565959; margin-bottom:14px;">Usually ships within 2 to 3 business days.</div>
 
-      <div class="pdp-sold-by">
-        <strong>Sold by:</strong> <a href="#">NutKase Official</a> &nbsp;&nbsp;
-        <strong>Ships from:</strong> NutKase Fulfillment<br>
-        Custom orders ship in 3–5 business days &nbsp;|&nbsp; <a href="#">Return policy</a>
+        <div class="pdp-custom-required">This product needs to be customized before adding to cart.</div>
+
+        <div class="pdp-qty-row" style="margin-bottom:12px;">
+          <span class="pdp-qty-label">Quantity:</span>
+          <select class="pdp-qty-select">
+            <option>1</option><option>5</option><option>10</option>
+            <option>25</option><option>50</option><option>100</option><option>500</option>
+          </select>
+        </div>
+
+        <button class="pdp-customize-cta" onclick="handleCustomizeNow()">Customize now</button>
+        <div class="pdp-custom-terms">By clicking "Customize now", you agree to these <a href="#">Terms and Conditions</a>.</div>
+
+        <button class="pdp-add-to-list">Add to List</button>
+
+        <dl class="pdp-seller-grid">
+          <div class="pdp-seller-row"><dt>Sold by</dt><dd><a href="#">NutKase Official</a></dd></div>
+          <div class="pdp-seller-row"><dt>Ships from</dt><dd>NutKase Fulfillment (3–5 business days for custom orders)</dd></div>
+          <div class="pdp-seller-row"><dt>Returns</dt><dd>This item is non-returnable</dd></div>
+          <div class="pdp-seller-row"><dt>Payment</dt><dd>Secure transaction</dd></div>
+        </dl>
       </div>
 
     </div>
@@ -509,6 +585,27 @@
   <div class="pdp-lower">
 
     <hr class="pdp-section-divider">
+
+    <!-- Top highlights — compact spec grid -->
+    <div class="pdp-section-title">Product details</div>
+    <div class="pdp-highlights">
+      <div class="pdp-highlight-item">
+        <span class="pdp-highlight-label">Material</span>
+        <span class="pdp-highlight-value">Polycarbonate + TPU</span>
+      </div>
+      <div class="pdp-highlight-item">
+        <span class="pdp-highlight-label">Drop Rating</span>
+        <span class="pdp-highlight-value">6.6 ft / 2m</span>
+      </div>
+      <div class="pdp-highlight-item">
+        <span class="pdp-highlight-label">Wireless Charging</span>
+        <span class="pdp-highlight-value">Qi + MagSafe</span>
+      </div>
+      <div class="pdp-highlight-item">
+        <span class="pdp-highlight-label">Customization</span>
+        <span class="pdp-highlight-value">Amazon Custom</span>
+      </div>
+    </div>
 
     <div class="pdp-section-title">About this item</div>
     <ul class="pdp-about-list">
